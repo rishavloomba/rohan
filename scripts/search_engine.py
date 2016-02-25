@@ -1,7 +1,6 @@
 from csvfiles import *
 import urllib2
 import re
-import time
 import sqlite3
 
 search_engine_file = 'csv/search_engine.csv'
@@ -24,6 +23,7 @@ for search_engine in search_engines:
         hit = re.findall(patten, page)[0]
         print "Done:%s" % hit
         sql = 'INSERT INTO %s (id, hit) VALUES (%s, %s)' % (search_engine, stock, hit)
+        conn.execute(sql)
 
 conn.commit()
 conn.close()
