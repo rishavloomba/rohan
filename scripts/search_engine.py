@@ -17,12 +17,12 @@ for search_engine in search_engines:
     for stock in sorted(stock_lists):
         url = search_engines[search_engine][0] % ('"' + stock_lists[stock][0] + '"')
         patten = search_engines[search_engine][1]
-        print "%s,%s,%s" % (search_engine,stock,stock_lists[stock][0])
+        print "%s,%s" % (search_engine,stock)
         response = urllib2.urlopen(url)
         page = response.read()
         hit = re.findall(patten, page)[0]
-        print "Done:%s" % hit
-        sql = 'INSERT INTO %s (id, hit) VALUES (%s, %s)' % (search_engine, stock, hit)
+        sql = "INSERT INTO %s (id, hit) VALUES ('%s', '%s')" % (search_engine, stock, hit)
+        print sql
         conn.execute(sql)
 
 conn.commit()
