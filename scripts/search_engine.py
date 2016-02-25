@@ -2,6 +2,7 @@ from csvfiles import *
 import urllib2
 import re
 import time
+import sqlite3
 
 search_engine_file = 'csv/search_engine.csv'
 search_engines = readcsvfile(search_engine_file)
