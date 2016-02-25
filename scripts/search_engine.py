@@ -21,7 +21,7 @@ for search_engine in search_engines:
         response = urllib2.urlopen(url)
         page = response.read()
         hit = re.findall(patten, page)[0]
-        sql = "INSERT INTO %s (id, hit) VALUES ('%s', '%s')" % (search_engine, stock, hit)
+        sql = "INSERT INTO %s (id, hit) VALUES ('%s', '%s')" % (search_engine, stock, hit.replace(',',''))
         print sql
         conn.execute(sql)
 
