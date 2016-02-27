@@ -1,5 +1,5 @@
 from csvfiles import *
-import urllib2
+import httplib2
 import re
 import sqlite3
 import time
@@ -12,18 +12,20 @@ stock_lists = readcsvfile(stock_lists_file)
 
 sqlite_file = 'sqlite/search_engine.db'
 
+http = httplib2.Http()
+
 def search_keyword(url, patten):
     n = 0
     hit = '0'
     while n < 10:
         n += 1
         try:
-            response = urllib2.urlopen(url)
-            page = response.read()
-            hit = re.findall(patten, page)[0]
+            response, content = http.request(url)
+            hit = re.findall(patten, content)[0]
             n = 10
         except:
-            time.sleep(5)
+            print n
+            time.sleep(1)
     return hit
 
 def insert_sqlite(search_results):
