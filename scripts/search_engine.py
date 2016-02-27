@@ -40,7 +40,7 @@ def main():
     search_results = []
     for search_engine in search_engines:
         for stock in sorted(stock_lists):
-            url = search_engines[search_engine][0] % ('"' + stock_lists[stock][0] + '"')
+            url = search_engines[search_engine][0] % ('"' + stock_lists[stock][0].replace(' ','') + '"')
             patten = search_engines[search_engine][1]
             print stock
             hit = search_keyword(url, patten)
