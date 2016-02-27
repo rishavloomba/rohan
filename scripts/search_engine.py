@@ -12,20 +12,19 @@ stock_lists = readcsvfile(stock_lists_file)
 
 sqlite_file = 'sqlite/search_engine.db'
 
-http = httplib2.Http()
-
 def search_keyword(url, patten):
     n = 0
     hit = '0'
     while n < 10:
         n += 1
         try:
+            http = httplib2.Http()
             response, content = http.request(url)
             hit = re.findall(patten, content)[0]
             n = 10
         except:
             print n
-            time.sleep(1)
+            time.sleep(60)
     return hit
 
 def insert_sqlite(search_results):
