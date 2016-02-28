@@ -30,7 +30,7 @@ def search_keyword(url, patten):
 def insert_sqlite(search_results):
     conn = sqlite3.connect(sqlite_file)
     for entry in search_results:
-        sql = "INSERT INTO %s (id, hit) VALUES ('%s', '%s')" % (entry[0], entry[1], entry[2])
+        sql = "INSERT INTO %s (st, ht) VALUES ('%s', '%s')" % (entry[0], entry[1], entry[2])
         conn.execute(sql)
     conn.commit()
     conn.close()
