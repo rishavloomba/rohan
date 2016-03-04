@@ -24,7 +24,7 @@ def search_keyword(url, patten):
             n = 10
         except:
             print n
-            time.sleep(60)
+            time.sleep(600)
     return hit
 
 def insert_sqlite(search_results):
