@@ -3,14 +3,14 @@ import sqlite3
 import time
 from bs4 import BeautifulSoup
 
-urls = ['http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=1',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=2',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=3',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=4',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=1',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=2',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=3',
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=4']
+urls = ['http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=1&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=2&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=3&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=4&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=1&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=2&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=3&db_type=0&date=%s' % time.strftime("%Y-%m-%d"),
+        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=4&db_type=0&date=%s' % time.strftime("%Y-%m-%d")]
 
 sqls = ['INSERT INTO hy_jtsyl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
         'INSERT INTO hy_gdsyl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
@@ -46,6 +46,7 @@ def parse_web(num):
             for tr in soup.select('tr .list-div-table-header'):
                 entries.append(map(lambda x: x.text.strip(), tr.select('td')))
             results = entries
+            n = 10
         except:
             print n
             time.sleep(600)
