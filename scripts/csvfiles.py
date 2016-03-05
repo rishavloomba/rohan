@@ -13,7 +13,6 @@ def readcsvfile(csvfile):
 def writecsvfile(csvfile, data):
     f = file(csvfile, 'wb')
     w = csv.writer(f)
-    for d in data:
-        w.writerow(d)
+    w.writerows(data)
     f.close()
 
