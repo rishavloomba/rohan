@@ -3,8 +3,8 @@ import sqlite3
 import time
 from bs4 import BeautifulSoup
 
-#dt = time.strftime("%Y-%m-%d")
-dt = '2016-03-04'
+dt = time.strftime("%Y-%m-%d")
+
 urls = ['http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=1803&TABKEY=tab1&txtQueryDate=%s' % dt,
         'http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=1803&TABKEY=tab2&txtQueryDate=%s' % dt,
         'http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=1803&TABKEY=tab3&txtQueryDate=%s' % dt,
