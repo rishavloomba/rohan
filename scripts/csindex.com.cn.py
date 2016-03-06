@@ -18,14 +18,14 @@ urls = ['http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_f
         'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=3&db_type=0&date=%s' % dt,
         'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=4&db_type=0&date=%s' % dt]
 
-sqls = ['INSERT INTO hy_jtsyl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO hy_gdsyl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO hy_sjl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO hy_gxl (hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO bk_jtsyl (name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO bk_gdsyl (name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO bk_sjl (name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)',
-        'INSERT INTO bk_gxl (name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES (%s)']
+sqls = ['INSERT INTO hy_jtsyl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO hy_gdsyl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO hy_sjl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO hy_gxl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO bk_jtsyl (dt, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO bk_gdsyl (dt, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO bk_sjl (dt, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
+        'INSERT INTO bk_gxl (dt, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)']
 
 sqlite_file = 'sqlite/csindex.com.cn.db'
 
@@ -33,7 +33,7 @@ def insert_sqlite(num, entries):
     conn = sqlite3.connect(sqlite_file)
     for entry in entries:
         values = '"' + '", "'.join(entry) + '"'
-        sql = sqls[num] % values
+        sql = sqls[num] % (dt, values)
         conn.execute(sql)
     conn.commit()
     conn.close()

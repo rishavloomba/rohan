@@ -14,10 +14,10 @@ urls = ['http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=18
         'http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=1803&TABKEY=tab3&txtQueryDate=%s' % dt,
         'http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=7&CATALOGID=1803&TABKEY=tab4&txtQueryDate=%s' % dt]
 
-sqls = ['INSERT INTO szsc (name, today, delta, percent, hvalue, hdate) VALUES (%s)',
-        'INSERT INTO szzb (name, today, delta, hvalue, hdate) VALUES (%s)',
-        'INSERT INTO zxb (name, today, delta, hvalue, hdate) VALUES (%s)',
-        'INSERT INTO cyb (name, today, delta, hvalue, hdate) VALUES (%s)']
+sqls = ['INSERT INTO szsc (dt, name, today, delta, percent, hvalue, hdate) VALUES ("%s", %s)',
+        'INSERT INTO szzb (dt, name, today, delta, hvalue, hdate) VALUES ("%s", %s)',
+        'INSERT INTO zxb (dt, name, today, delta, hvalue, hdate) VALUES ("%s", %s)',
+        'INSERT INTO cyb (dt, name, today, delta, hvalue, hdate) VALUES ("%s", %s)']
 
 sqlite_file = 'sqlite/szse.cn.db'
 
@@ -25,7 +25,7 @@ def insert_sqlite(num, entries):
     conn = sqlite3.connect(sqlite_file)
     for entry in entries:
         values = '"' + '", "'.join(entry) + '"'
-        sql = sqls[num] % values
+        sql = sqls[num] % (dt, values)
         conn.execute(sql)
     conn.commit()
     conn.close()

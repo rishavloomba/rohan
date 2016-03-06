@@ -15,11 +15,11 @@ urls = ['http://www.cnindex.com.cn/syl/%s/csrc_szzt.html' % dt,
         'http://www.cnindex.com.cn/syl/%s/csrc_cyb.html'  % dt,
         'http://www.cnindex.com.cn/syl/%s/csrc_hsls.html' % dt]
 
-sqls = ['INSERT INTO szsc (hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES (%s)',
-        'INSERT INTO szzb (hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES (%s)',
-        'INSERT INTO zxb  (hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES (%s)',
-        'INSERT INTO cyb  (hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES (%s)',
-        'INSERT INTO hsls (hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES (%s)']
+sqls = ['INSERT INTO szsc (dt, hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES ("%s", %s)',
+        'INSERT INTO szzb (dt, hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES ("%s", %s)',
+        'INSERT INTO zxb  (dt, hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES ("%s", %s)',
+        'INSERT INTO cyb  (dt, hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES ("%s", %s)',
+        'INSERT INTO hsls (dt, hyid, name, total, jtsyl_jqpj, jtsyl_zws, gdsyl_jqpj, gdsyl_zws) VALUES ("%s", %s)']
 
 sqlite_file = 'sqlite/cnindex.com.cn.db'
 
@@ -27,7 +27,7 @@ def insert_sqlite(num, entries):
     conn = sqlite3.connect(sqlite_file)
     for entry in entries:
         values = '"' + '", "'.join(entry) + '"'
-        sql = sqls[num] % values
+        sql = sqls[num] % (dt, values)
         conn.execute(sql)
     conn.commit()
     conn.close()
