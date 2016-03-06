@@ -1,9 +1,13 @@
 import httplib2
 import sqlite3
 import time
+import sys
 from bs4 import BeautifulSoup
 
-dt = time.strftime("%Y-%m-%d")
+if len(sys.argv) < 2:
+    dt = time.strftime("%Y-%m-%d")
+else:
+    dt = sys.argv[1]
 
 urls = ['http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=1&db_type=0&date=%s' % dt,
         'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=2&db_type=0&date=%s' % dt,

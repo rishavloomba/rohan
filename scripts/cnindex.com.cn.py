@@ -1,9 +1,13 @@
 import httplib2
 import sqlite3
 import time
+import sys
 from bs4 import BeautifulSoup
 
-dt = time.strftime("%Y-%m-%d")
+if len(sys.argv) < 2:
+    dt = time.strftime("%Y-%m-%d")
+else:
+    dt = sys.argv[1]
 
 urls = ['http://www.cnindex.com.cn/syl/%s/csrc_szzt.html' % dt,
         'http://www.cnindex.com.cn/syl/%s/csrc_szzb.html' % dt,
