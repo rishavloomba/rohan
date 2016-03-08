@@ -48,6 +48,8 @@ def parse_web(num):
                     entries.append(map(lambda x: x.text.strip(), tr.select('td')[0:7]))
                 results = entries
                 n = 10
+            elif response['status'] == '404':
+                n = 10
         except:
             print n
             time.sleep(600)
