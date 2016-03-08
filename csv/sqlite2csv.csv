@@ -1,4 +1,4 @@
-search_baidu.csv,search_engine.db,baidu
+baidu_search.csv,search_engine.db,baidu
 cnindex_szsc.csv,cnindex.com.cn.db,szsc
 cnindex_szzb.csv,cnindex.com.cn.db,szzb
 cnindex_zxb.csv,cnindex.com.cn.db,zxb
