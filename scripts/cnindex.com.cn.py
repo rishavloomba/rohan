@@ -35,7 +35,7 @@ def insert_sqlite(num, entries):
 def parse_web(num):
     n = 0
     results = []
-    print urls[num]
+    print time.ctime() + ' -- ' + urls[num]
     while n < 10:
         n += 1
         try:

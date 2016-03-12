@@ -41,7 +41,7 @@ def main():
         for stock in sorted(stock_lists):
             url = search_engines[search_engine][0] % ('"' + stock_lists[stock][0].replace(' ','') + '"')
             patten = search_engines[search_engine][1]
-            print stock
+            print time.ctime() + ' -- ' + stock
             hit = search_keyword(url, patten)
             search_results.append([search_engine, stock, hit.replace(',','')])
     insert_sqlite(search_results)
