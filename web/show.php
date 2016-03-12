@@ -18,25 +18,41 @@ echo <<<END
 <script type="text/javascript">
 Highcharts.setOptions({
     global: {
-        timezoneOffset: -8 * 60
+        lang: {
+            loading: '正在加载...',
+            months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            shortMonths: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            weekdays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期']
+        }
     }
 });
 $(function () {
-    $.getJSON('./json.php?chart={$chart}&callback=?', function (data) {
+    $.getJSON('./json.php?chart={$chart}&callback=?', function(data) {
         $('#container').highcharts('StockChart', {
-            rangeSelector : {
-                selected : 1
+            rangeSelector: {
+                selected: 1,
+                buttons: [{type: 'month', count: 1, text: '一月'},
+                          {type: 'month', count: 3, text: '三月'},
+                          {type: 'month', count: 6, text: '六月'},
+                          {type: 'ytd', text: '今年'},
+                          {type: 'year', count: 1, text: '一年'},
+                          {type: 'all', text: '所有'}],
+                inputDateFormat: "%Y-%m-%d"
             },
-            title : {
-                text : '{$config[$chart]['name']}'
+            title: {
+                text: '{$config[$chart]['name']}'
             },
-            series : [{
+            series: [{
                 name : '{$config[$chart]['name']}',
                 data : data,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    dateTimeLabelFormats: "%Y-%m-%d"
                 }
-            }]
+            }],
+            credits: {
+                text: 'Powered by RohanKDD'
+            }
         });
     });
 });
