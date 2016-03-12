@@ -20,7 +20,7 @@ class SSP {
 
     static function db_connect ($db_file) {
         try {
-            $db = @new PDO("sqlite:{$db_file}",
+            $db = @new PDO("sqlite:../sqlite/{$db_file}",
                            null,
                            null,
                            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
@@ -34,24 +34,18 @@ class SSP {
         return $db;
     }
 
-    static function simple ($request, $db_file, $sql, $columns) {
+    static function simple ($request, $db_file, $sql) {
         $conn = self::db_connect($db_file);
         $data = self::sql_exec($conn, $sql);
-        $output = self::data_output($data, $columns);
-        return $request['callback'] . '(' . $output . ')';
+        $output = self::data_output($data);
+        return $request . '(' . $output . ')';
     }
 
-    static function data_output ($data, $columns) {
+    static function data_output ($data) {
         $out = array();
         for ($i=0, $ien=count($data); $i<$ien; $i++) {
-            for ($j=0, $jen=count($columns); $j<$jen; $j++) {
-                if ($j == 0) {
-                    $row[$j] = strtotime($data[$i][$columns[$j]]) * 1000;
-                }
-                else {
-                    $row[$j] = floatval($data[$i][$columns[$j]]);
-                }
-            }
+            $row[0] = strtotime($data[$i][0]) * 1000;
+            $row[1] = floatval($data[$i][1]);
             $out[] = $row;
         }
         return json_encode($out);
