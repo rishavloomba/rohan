@@ -1,18 +1,13 @@
 <?php
-require('config.php');
-if (isset($_GET['chart'])) {
-    $chart = $_GET['chart'];
-}
-else {
-    $chart = 'csindex_bk_jtsyl_pe_hsag';
-}
+
+$sub = isset($_GET['sub']) ? $_GET['sub'] : $_GET['val'];
 
 echo <<<END
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{$config[$chart]['name']}</title>
+<title>{$_GET['title']}</title>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
 <script type="text/javascript">
@@ -27,7 +22,7 @@ Highcharts.setOptions({
     }
 });
 $(function () {
-    $.getJSON('./json.php?chart={$chart}&callback=?', function(data) {
+    $.getJSON('./json.php?db={$_GET['db']}&tb={$_GET['tb']}&col={$_GET['col']}&key={$_GET['key']}&val={$_GET['val']}&callback=?', function(data) {
         $('#container').highcharts('StockChart', {
             rangeSelector: {
                 selected: 1,
@@ -40,18 +35,36 @@ $(function () {
                 inputDateFormat: "%Y-%m-%d"
             },
             title: {
-                text: '{$config[$chart]['name']}'
+                text: '{$_GET['title']}'
             },
             series: [{
-                name : '{$config[$chart]['name']}',
+                name : '{$sub}',
                 data : data,
                 tooltip: {
                     valueDecimals: 2,
-                    dateTimeLabelFormats: "%Y-%m-%d"
+                    dateTimeLabelFormats: {
+                        hour: "%Y-%m-%d"
+                    }
                 }
             }],
+            navigator: {
+                xAxis: {
+                    dateTimeLabelFormats: {
+                        year: "%Y",
+                        month: "%Y-%m"
+                    }
+                },
+            },
+            xAxis: {
+                dateTimeLabelFormats: {
+                    year: "%Y",
+                    month: "%Y-%m",
+                    week: "%Y-%m",
+                    day: "%m-%d"
+                }
+            },
             credits: {
-                text: 'Powered by RohanKDD'
+                text: '若海数据'
             }
         });
     });
