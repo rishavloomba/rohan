@@ -11,7 +11,7 @@
     <span><a href="baidu.html">查询</a></span>
 </div>
 <div class="tab">
-    <h4>中证指数A股市场主要板块市盈率</h4>
+    <h4>中证指数板块市盈率(www.csindex.com.cn)</h4>
     <form id="csindex_bk" action="show.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="name" />
@@ -47,7 +47,7 @@ $("#csindex_bk_submit").click(function(){
     </form>
 </div>
 <div class="tab">
-    <h4>中证指数A股全市场行业市盈率</h4>
+    <h4>中证指数行业市盈率 (www.csindex.com.cn)</h4>
     <form id="csindex_hy" action="show.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="hyid" />
@@ -183,6 +183,147 @@ $("#csindex_hy_submit").click(function(){
   $("#csindex_hy_title").val($("#csindex_hy_val").find("option:selected").text() + $("#csindex_hy_tb").find("option:selected").text() + $("#csindex_hy_col").find("option:selected").text());
   $("#csindex_hy_sub").val($("#csindex_hy_val").find("option:selected").text());
   $("#csindex_hy").submit;
+});
+        </script>
+    </form>
+</div>
+<div class="tab">
+    <h4>巨潮指数行业市盈率 (www.cnindex.com.cn)</h4>
+    <form id="cnindex" action="show.php">
+        <input type="hidden" name="db" value="cnindex.com.cn.db" />
+        <input type="hidden" name="key" value="hyid" />
+        <input type="hidden" name="title" id="cnindex_title" />
+        <input type="hidden" name="sub" id="cnindex_sub" />
+        <select name="tb" id="cnindex_tb">
+            <option value="szsc">深圳市场</option>
+            <option value="szzb">深市主板</option>
+            <option value="zxb">中小板</option>
+            <option value="cyb">创业板</option>
+            <option value="hsls">沪深两市</option>
+        </select>
+        <select name="val" id="cnindex_val">
+            <option value="A">A 农、林、牧、渔业</option>
+            <option value="A01">A01 农业</option>
+            <option value="A02">A02 林业</option>
+            <option value="A03">A03 畜牧业</option>
+            <option value="A04">A04 渔业</option>
+            <option value="A05">A05 农、林、牧、渔服务业</option>
+            <option value="B">B 采矿业</option>
+            <option value="B06">B06 煤炭开采和洗选业</option>
+            <option value="B07">B07 石油和天然气开采业</option>
+            <option value="B08">B08 黑色金属矿采选业</option>
+            <option value="B09">B09 有色金属矿采选业</option>
+            <option value="B10">B10 非金属矿采选业</option>
+            <option value="B11">B11 开采辅助活动</option>
+            <option value="B12">B12 其他采矿业</option>
+            <option value="C">C 制造业</option>
+            <option value="C13">C13 农副食品加工业</option>
+            <option value="C14">C14 食品制造业</option>
+            <option value="C15">C15 酒、饮料和精制茶制造业</option>
+            <option value="C16">C16 烟草制品业</option>
+            <option value="C17">C17 纺织业</option>
+            <option value="C18">C18 纺织服装、服饰业</option>
+            <option value="C19">C19 皮革、毛皮、羽毛及其制品和制鞋业</option>
+            <option value="C20">C20 木材加工和木、竹、藤、棕、草制品业</option>
+            <option value="C21">C21 家具制造业</option>
+            <option value="C22">C22 造纸和纸制品业</option>
+            <option value="C23">C23 印刷和记录媒介复制业</option>
+            <option value="C24">C24 文教、工美、体育和娱乐用品制造业</option>
+            <option value="C25">C25 石油加工、炼焦和核燃料加工业</option>
+            <option value="C26">C26 化学原料和化学制品制造业</option>
+            <option value="C27">C27 医药制造业</option>
+            <option value="C28">C28 化学纤维制造业</option>
+            <option value="C29">C29 橡胶和塑料制品业</option>
+            <option value="C30">C30 非金属矿物制品业</option>
+            <option value="C31">C31 黑色金属冶炼和压延加工业</option>
+            <option value="C32">C32 有色金属冶炼和压延加工业</option>
+            <option value="C33">C33 金属制品业</option>
+            <option value="C34">C34 通用设备制造业</option>
+            <option value="C35">C35 专用设备制造业</option>
+            <option value="C36">C36 汽车制造业</option>
+            <option value="C37">C37 铁路、船舶、航空航天和其他运输设备制造业</option>
+            <option value="C38">C38 电气机械和器材制造业</option>
+            <option value="C39">C39 计算机、通信和其他电子设备制造业</option>
+            <option value="C40">C40 仪器仪表制造业</option>
+            <option value="C41">C41 其他制造业</option>
+            <option value="C42">C42 废弃资源综合利用业</option>
+            <option value="C43">C43 金属制品、机械和设备修理业</option>
+            <option value="D">D 电力、热力、燃气及水生产和供应业</option>
+            <option value="D44">D44 电力、热力生产和供应业</option>
+            <option value="D45">D45 燃气生产和供应业</option>
+            <option value="D46">D46 水的生产和供应业</option>
+            <option value="E">E 建筑业</option>
+            <option value="E47">E47 房屋建筑业</option>
+            <option value="E48">E48 土木工程建筑业</option>
+            <option value="E49">E49 建筑安装业</option>
+            <option value="E50">E50 建筑装饰和其他建筑业</option>
+            <option value="F">F 批发和零售业</option>
+            <option value="F51">F51 批发业</option>
+            <option value="F52">F52 零售业</option>
+            <option value="G">G 交通运输、仓储和邮政业</option>
+            <option value="G53">G53 铁路运输业</option>
+            <option value="G54">G54 道路运输业</option>
+            <option value="G55">G55 水上运输业</option>
+            <option value="G56">G56 航空运输业</option>
+            <option value="G57">G57 管道运输业</option>
+            <option value="G58">G58 装卸搬运和运输代理业</option>
+            <option value="G59">G59 仓储业</option>
+            <option value="G60">G60 邮政业</option>
+            <option value="H">H 住宿和餐饮业</option>
+            <option value="H61">H61 住宿业</option>
+            <option value="H62">H62 餐饮业</option>
+            <option value="I">I 信息传输、软件和信息技术服务业</option>
+            <option value="I63">I63 电信、广播电视和卫星传输服务</option>
+            <option value="I64">I64 互联网和相关服务</option>
+            <option value="I65">I65 软件和信息技术服务业</option>
+            <option value="J">J 金融业</option>
+            <option value="J66">J66 货币金融服务</option>
+            <option value="J67">J67 资本市场服务</option>
+            <option value="J68">J68 保险业</option>
+            <option value="J69">J69 其他金融业</option>
+            <option value="K">K 房地产业</option>
+            <option value="K70">K70 房地产业</option>
+            <option value="L">L 租赁和商务服务业</option>
+            <option value="L71">L71 租赁业</option>
+            <option value="L72">L72 商务服务业</option>
+            <option value="M">M 科学研究和技术服务业</option>
+            <option value="M73">M73 研究和试验发展</option>
+            <option value="M74">M74 专业技术服务业</option>
+            <option value="M75">M75 科技推广和应用服务业</option>
+            <option value="N">N 水利、环境和公共设施管理业</option>
+            <option value="N76">N76 水利管理业</option>
+            <option value="N77">N77 生态保护和环境治理业</option>
+            <option value="N78">N78 公共设施管理业</option>
+            <option value="O">O 居民服务、修理和其他服务业</option>
+            <option value="O79">O79 居民服务业</option>
+            <option value="O80">O80 机动车、电子产品和日用产品修理业</option>
+            <option value="O81">O81 其他服务业</option>
+            <option value="P">P 教育</option>
+            <option value="P82">P82 教育</option>
+            <option value="Q">Q 卫生和社会工作</option>
+            <option value="Q83">Q83 卫生</option>
+            <option value="Q84">Q84 社会工作</option>
+            <option value="R">R 文化、体育和娱乐业</option>
+            <option value="R85">R85 新闻和出版业</option>
+            <option value="R86">R86 广播、电视、电影和影视录音制作业</option>
+            <option value="R87">R87 文化艺术业</option>
+            <option value="R88">R88 体育</option>
+            <option value="R89">R89 娱乐业</option>
+            <option value="S">S 综合</option>
+            <option value="S90">S90 综合</option>
+        </select>
+        <select name="col" id="cnindex_col">
+            <option value="jtsyl_jqpj">静态市盈率加权平均</option>
+            <option value="jtsyl_zws">静态市盈率中位数</option>
+            <option value="gdsyl_jqpj">滚动市盈率加权平均</option>
+            <option value="gdsyl_zws">滚动市盈率中位数</option>
+        </select>
+        <button id="cnindex_submit">提交</button>
+        <script type="text/javascript">
+$("#cnindex_submit").click(function(){
+  $("#cnindex_title").val($("#cnindex_val").find("option:selected").text() + $("#cnindex_col").find("option:selected").text() + "(" + $("#cnindex_tb").find("option:selected").text() + ")");
+  $("#cnindex_sub").val($("#cnindex_val").find("option:selected").text());
+  $("#cnindex").submit;
 });
         </script>
     </form>
