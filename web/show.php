@@ -1,6 +1,7 @@
 <?php
 
 $sub = isset($_GET['sub']) ? $_GET['sub'] : $_GET['val'];
+$val = urlencode($_GET['val']);
 
 echo <<<END
 <!DOCTYPE HTML>
@@ -29,7 +30,7 @@ Highcharts.setOptions({
     }
 });
 $(function () {
-    $.getJSON('./json.php?db={$_GET['db']}&tb={$_GET['tb']}&col={$_GET['col']}&key={$_GET['key']}&val={$_GET['val']}&callback=?', function(data) {
+    $.getJSON('./json.php?db={$_GET['db']}&tb={$_GET['tb']}&col={$_GET['col']}&key={$_GET['key']}&val={$val}&callback=?', function(data) {
         $('#container').highcharts('StockChart', {
             rangeSelector: {
                 selected: 1,
