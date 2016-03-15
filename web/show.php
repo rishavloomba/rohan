@@ -72,6 +72,7 @@ $(function () {
                 }
             },
             exporting: {
+                filename: '{$_GET['title']}',
                 sourceHeight: 600,
                 sourceWidth: 1200
             },
