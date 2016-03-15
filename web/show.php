@@ -12,14 +12,13 @@ echo <<<END
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/exporting.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/offline-exporting.js"></script>
 <script type="text/javascript">
 Highcharts.setOptions({
     lang: {
-        printChart: '打印',
-        downloadJPEG: '导出JPG格式',
-        downloadPDF: '导出PDF格式',
-        downloadPNG: '导出PNG格式',
-        downloadSVG: '导出SVG格式',
+        printChart: '打印图像',
+        downloadPNG: '导出PNG格式图像',
+        downloadSVG: '导出SVG格式图像',
         loading: '正在加载...',
         rangeSelectorZoom: '时间范围',
         rangeSelectorFrom: '开始',
@@ -68,9 +67,13 @@ $(function () {
                 dateTimeLabelFormats: {
                     year: "%Y",
                     month: "%Y-%m",
-                    week: "%Y-%m",
+                    week: "%m-%d",
                     day: "%m-%d"
                 }
+            },
+            exporting: {
+                sourceHeight: 600,
+                sourceWidth: 1200
             },
             credits: {
                 text: '若海数据'
@@ -81,7 +84,7 @@ $(function () {
 </script>
 </head>
 <body>
-<div id="container" style="height: 600px; min-width: 600px"></div>
+<div id="container" style="height: 600px; min-width: 1200px"></div>
 </body>
 </html>
 END;
