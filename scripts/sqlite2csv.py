@@ -39,7 +39,7 @@ def dump_search(csv_file, sqlite_file, table):
             else:
                 en.append(ds[dt][st])
         all.append(en)
-    writecsvfile(csv_file, all)
+    writecsvfile(csv_dir+table+'.csv', all)
 
 
 def main():
@@ -49,8 +49,7 @@ def main():
     for csv_file in entries:
         if entries[csv_file][0] == 'search_engine.db':
             dump_search(csv_dir + csv_file, sqlite_dir + entries[csv_file][0], entries[csv_file][1])
-        else:
-            dump_data(csv_dir + csv_file, sqlite_dir + entries[csv_file][0], entries[csv_file][1])
+        dump_data(csv_dir + csv_file, sqlite_dir + entries[csv_file][0], entries[csv_file][1])
 
 if __name__ == '__main__':
     main()
