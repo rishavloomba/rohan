@@ -45,7 +45,7 @@ class SSP {
         $out = array();
         for ($i=0, $ien=count($data); $i<$ien; $i++) {
             $row[0] = strtotime($data[$i][0]) * 1000;
-            $row[1] = floatval($data[$i][1]);
+            $row[1] = floatval(str_replace(',','',$data[$i][1]));
             $out[] = $row;
         }
         return json_encode($out);

@@ -13,24 +13,24 @@
     <span><a href="../csv/">数据下载</a></span>
 </div>
 <div class="tab">
-    <h4>中证指数板块市盈率(www.csindex.com.cn)</h4>
+    <h4>中证指数板块市盈率 (www.csindex.com.cn)</h4>
     <form id="csindex_bk" action="show.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="name" />
         <input type="hidden" name="title" id="csindex_bk_title" />
+        <select name="val" id="csindex_bk_val">
+            <option value="沪深A股">沪深A股</option>
+            <option value="上海A股">上海A股</option>
+            <option value="深圳A股">深圳A股</option>
+            <option value="深市主板">深市主板</option>
+            <option value="中小板">中小板</option>
+            <option value="创业板">创业板</option>
+        </select>
         <select name="tb" id="csindex_bk_tb">
             <option value="bk_jtsyl">静态市盈率</option>
             <option value="bk_gdsyl">滚动市盈率</option>
             <option value="bk_sjl">市净率</option>
             <option value="bk_gxl">股息率</option>
-        </select>
-        <select name="val" id="csindex_bk_val">
-            <option value="上海A股">上海A股</option>
-            <option value="深圳A股">深圳A股</option>
-            <option value="沪深A股">沪深A股</option>
-            <option value="深市主板">深市主板</option>
-            <option value="中小板">中小板</option>
-            <option value="创业板">创业板</option>
         </select>
         <select name="col" id="csindex_bk_col">
             <option value="pe">日均线</option>
@@ -55,12 +55,6 @@ $("#csindex_bk_submit").click(function(){
         <input type="hidden" name="key" value="hyid" />
         <input type="hidden" name="title" id="csindex_hy_title" />
         <input type="hidden" name="sub" id="csindex_hy_sub" />
-        <select name="tb" id="csindex_hy_tb">
-            <option value="hy_jtsyl">静态市盈率</option>
-            <option value="hy_gdsyl">滚动市盈率</option>
-            <option value="hy_sjl">市净率</option>
-            <option value="hy_gxl">股息率</option>
-        </select>
         <select name="val" id="csindex_hy_val">
             <option value="A">A 农、林、牧、渔业</option>
             <option value="01">01 农业</option>
@@ -172,6 +166,12 @@ $("#csindex_bk_submit").click(function(){
             <option value="S">S 综合</option>
             <option value="90">90 综合</option>
         </select>
+        <select name="tb" id="csindex_hy_tb">
+            <option value="hy_jtsyl">静态市盈率</option>
+            <option value="hy_gdsyl">滚动市盈率</option>
+            <option value="hy_sjl">市净率</option>
+            <option value="hy_gxl">股息率</option>
+        </select>
         <select name="col" id="csindex_hy_col">
             <option value="pe">日均线</option>
             <option value="pe1">月均线</option>
@@ -197,11 +197,11 @@ $("#csindex_hy_submit").click(function(){
         <input type="hidden" name="title" id="cnindex_title" />
         <input type="hidden" name="sub" id="cnindex_sub" />
         <select name="tb" id="cnindex_tb">
+            <option value="hsls">沪深两市</option>
             <option value="szsc">深圳市场</option>
             <option value="szzb">深市主板</option>
             <option value="zxb">中小板</option>
             <option value="cyb">创业板</option>
-            <option value="hsls">沪深两市</option>
         </select>
         <select name="val" id="cnindex_val">
             <option value="A">A 农、林、牧、渔业</option>
@@ -329,6 +329,126 @@ $("#cnindex_submit").click(function(){
 });
         </script>
     </form>
+</div>
+<div class="tab">
+    <h4>深圳证券交易所基本指标 (http://www.szse.cn)</h4>
+    <div>
+    <form id="szse_szsc" action="show.php">
+        <input type="hidden" name="db" value="szse.cn.db" />
+        <input type="hidden" name="tb" value="szsc" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="today" />
+        <input type="hidden" name="title" id="szse_szsc_title" />
+        <input type="hidden" name="sub" id="szse_szsc_sub" />
+        <span>深圳市场</span>
+        <select name="val" id="szse_szsc_val">
+            <option value="股票平均市盈率">平均市盈率</option>
+            <option value="股票平均换手率">平均换手率</option>
+            <option value="市场总成交金额（元）">总成交金额</option>
+            <option value="股票总股本（股）">股票总股本</option>
+            <option value="股票流通股本（股）">股票流通股本</option>
+            <option value="股票总市值（元）">股票总市值</option>
+            <option value="股票流通市值（元）">股票流通市值</option>
+            <option value="股票成交金额（元）">股票成交金额</option>
+            <option value="平均股票价格（元）">平均股票价格</option>
+        </select>
+        <button id="szse_szsc_submit">提交</button>
+        <script type="text/javascript">
+$("#szse_szsc_submit").click(function(){
+  $("#szse_szsc_title").val("深圳市场" + $("#szse_szsc_val").find("option:selected").text());
+  $("#szse_szsc_sub").val($("#szse_szsc_val").find("option:selected").text());
+  $("#szse_szsc").submit;
+});
+        </script>
+    </form>
+    </div>
+    <div>
+    <form id="szse_szzb" action="show.php">
+        <input type="hidden" name="db" value="szse.cn.db" />
+        <input type="hidden" name="tb" value="szzb" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="today" />
+        <input type="hidden" name="title" id="szse_szzb_title" />
+        <input type="hidden" name="sub" id="szse_szzb_sub" />
+        <span>深市主板</span>
+        <select name="val" id="szse_szzb_val">
+            <option value="平均市盈率(倍)">平均市盈率</option>
+            <option value="总发行股本(股)">总发行股本</option>
+            <option value="总流通股本(股)">总流通股本</option>
+            <option value="上市公司市价总值(元)">上市公司市价总值</option>
+            <option value="上市公司流通市值(元)">上市公司流通市值</option>
+            <option value="总成交金额(元)">总成交金额</option>
+            <option value="总成交股数">总成交股数</option>
+            <option value="总成交笔数">总成交笔数</option>
+        </select>
+        <button id="szse_szzb_submit">提交</button>
+        <script type="text/javascript">
+$("#szse_szzb_submit").click(function(){
+  $("#szse_szzb_title").val("深市主板" + $("#szse_szzb_val").find("option:selected").text());
+  $("#szse_szzb_sub").val($("#szse_szzb_val").find("option:selected").text());
+  $("#szse_szzb").submit;
+});
+        </script>
+    </form>
+    </div>
+    <div>
+    <form id="szse_zxb" action="show.php">
+        <input type="hidden" name="db" value="szse.cn.db" />
+        <input type="hidden" name="tb" value="zxb" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="today" />
+        <input type="hidden" name="title" id="szse_zxb_title" />
+        <input type="hidden" name="sub" id="szse_zxb_sub" />
+        <span>中小板</span>
+        <select name="val" id="szse_zxb_val">
+            <option value="平均市盈率(倍)">平均市盈率</option>
+            <option value="总发行股本(股)">总发行股本</option>
+            <option value="总流通股本(股)">总流通股本</option>
+            <option value="上市公司市价总值(元)">上市公司市价总值</option>
+            <option value="上市公司流通市值(元)">上市公司流通市值</option>
+            <option value="总成交金额(元)">总成交金额</option>
+            <option value="总成交股数">总成交股数</option>
+            <option value="总成交笔数">总成交笔数</option>
+        </select>
+        <button id="szse_zxb_submit">提交</button>
+        <script type="text/javascript">
+$("#szse_zxb_submit").click(function(){
+  $("#szse_zxb_title").val("中小板" + $("#szse_zxb_val").find("option:selected").text());
+  $("#szse_zxb_sub").val($("#szse_zxb_val").find("option:selected").text());
+  $("#szse_zxb").submit;
+});
+        </script>
+    </form>
+    </div>
+    <div>
+    <form id="szse_cyb" action="show.php">
+        <input type="hidden" name="db" value="szse.cn.db" />
+        <input type="hidden" name="tb" value="cyb" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="today" />
+        <input type="hidden" name="title" id="szse_cyb_title" />
+        <input type="hidden" name="sub" id="szse_cyb_sub" />
+        <span>创业板</span>
+        <select name="val" id="szse_cyb_val">
+            <option value="平均市盈率(倍)">平均市盈率</option>
+            <option value="总发行股本(股)">总发行股本</option>
+            <option value="总流通股本(股)">总流通股本</option>
+            <option value="上市公司市价总值(元)">上市公司市价总值</option>
+            <option value="上市公司流通市值(元)">上市公司流通市值</option>
+            <option value="总成交金额(元)">总成交金额</option>
+            <option value="总成交股数">总成交股数</option>
+            <option value="总成交笔数">总成交笔数</option>
+        </select>
+        <button id="szse_cyb_submit">提交</button>
+        <script type="text/javascript">
+$("#szse_cyb_submit").click(function(){
+  $("#szse_cyb_title").val("创业板" + $("#szse_cyb_val").find("option:selected").text());
+  $("#szse_cyb_sub").val($("#szse_cyb_val").find("option:selected").text());
+  $("#szse_cyb").submit;
+});
+        </script>
+    </form>
+    </div>
 </div>
 </div>
 </body>

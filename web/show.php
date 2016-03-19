@@ -48,7 +48,6 @@ $(function () {
                 name : '{$sub}',
                 data : data,
                 tooltip: {
-                    valueDecimals: 2,
                     dateTimeLabelFormats: {
                         day: "%Y-%m-%d",
                         hour: "%Y-%m-%d"
