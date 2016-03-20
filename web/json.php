@@ -12,7 +12,7 @@ if(isset($_GET['key']) and $_GET['key'] != '') {
     $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "`";
 }
 
-if(in_array($db, $user_priv)) {
+if($user_valid and in_array($db, $user_priv)) {
     echo SSP::line($_GET['callback'], $db, $sql);
 }
 ?>
