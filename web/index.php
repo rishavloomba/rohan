@@ -13,7 +13,8 @@ $btn = array(
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>若海数据</title>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
 <body>
@@ -23,12 +24,15 @@ $btn = array(
         <tr>
             <td>用户: <?php echo $user_name;?></td>
             <td>等级: <?php echo $user_level;?></td>
+        </tr>
+        <tr>
             <td>有效至: <?php echo $user_expire;?></td>
             <td><a href="logout.php">登出</a></td>
         </tr>
     </table>
     <span style="color:red;">网站测试期间地址可能会有变动,请加微信公众号RohanKDD</span>
 </div>
+<fieldset style="width:90%;">
 <div class="tab">
     <h4>中证指数板块市盈率 (www.csindex.com.cn)</h4>
     <form id="csindex_bk" action="show.php">
@@ -72,7 +76,7 @@ $("#csindex_bk_submit").click(function(){
         <input type="hidden" name="key" value="hyid" />
         <input type="hidden" name="title" id="csindex_hy_title" />
         <input type="hidden" name="sub" id="csindex_hy_sub" />
-        <select name="val" id="csindex_hy_val">
+        <select name="val" id="csindex_hy_val" style="width:10em;">
             <option value="A">A 农、林、牧、渔业</option>
             <option value="01">01 农业</option>
             <option value="02">02 林业</option>
@@ -196,7 +200,7 @@ $("#csindex_bk_submit").click(function(){
             <option value="pe6">半年均线</option>
             <option value="pe12">年均线</option>
         </select>
-        <button id="csindex_hy_submit" <?php echo $btn['csindex'];?>">提交</button>
+        <button id="csindex_hy_submit" <?php echo $btn['csindex'];?>>提交</button>
         <script type="text/javascript">
 $("#csindex_hy_submit").click(function(){
   $("#csindex_hy_title").val($("#csindex_hy_val").find("option:selected").text() + $("#csindex_hy_tb").find("option:selected").text() + $("#csindex_hy_col").find("option:selected").text());
@@ -206,6 +210,9 @@ $("#csindex_hy_submit").click(function(){
         </script>
     </form>
 </div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
 <div class="tab">
     <h4>巨潮指数行业市盈率 (www.cnindex.com.cn)</h4>
     <form id="cnindex" action="show.php">
@@ -220,7 +227,7 @@ $("#csindex_hy_submit").click(function(){
             <option value="zxb">中小板</option>
             <option value="cyb">创业板</option>
         </select>
-        <select name="val" id="cnindex_val">
+        <select name="val" id="cnindex_val" style="width:10em;">
             <option value="A">A 农、林、牧、渔业</option>
             <option value="A01">A01 农业</option>
             <option value="A02">A02 林业</option>
@@ -347,6 +354,9 @@ $("#cnindex_submit").click(function(){
         </script>
     </form>
 </div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
 <div class="tab">
     <h4>深圳证券交易所基本指标 (www.szse.cn)</h4>
     <div>
@@ -467,6 +477,9 @@ $("#szse_cyb_submit").click(function(){
     </form>
     </div>
 </div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
 <div class="tab">
     <h4>上海证券交易所基本指标 (www.sse.com.cn)</h4>
     <form id="sse" action="show.php">
@@ -496,6 +509,7 @@ $("#sse_submit").click(function(){
         </script>
     </form>
 </div>
+</fieldset>
 </div>
 </body>
 </html>

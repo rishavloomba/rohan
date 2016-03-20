@@ -22,16 +22,18 @@ if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>若海数据 - 用户登录</title>
 </head>
 <body>
 <form method="post" action="login.php">
-    <fieldset style="text-align:center; width:400px;">
+    <fieldset style="width:90%;">
         <legend>用户登录</legend>
-        <table style="text-align:right; width:80%;">
+        <table style="text-align:right;">
             <tr><td>用户名</td><td><input type="text" id="username" name="username" value="<?php if(isset($_POST['username'])){ echo $_POST['username']; } ?>" /></td></tr>
             <tr><td>密码</td><td><input type="password" id="password" name="password" /></td></tr>
             <tr><td></td><td><input type="submit" value="登录" name="submit"/></td></tr>
