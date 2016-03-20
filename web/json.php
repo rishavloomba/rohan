@@ -4,9 +4,14 @@ require('ssp.php');
 header('Content-type: application/json');
 
 $db = $_GET['db'];
-$val = urldecode($_GET['val']);
-$sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "` WHERE " . $_GET['key'] . " = '" . $val . "'";
 
-echo SSP::simple($_GET['callback'], $db, $sql);
+if(isset($_GET['key']) and $_GET['key'] != '') {
+    $val = urldecode($_GET['val']);
+    $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "` WHERE " . $_GET['key'] . " = '" . $val . "'";
+} else {
+    $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "`";
+}
+
+echo SSP::line($_GET['callback'], $db, $sql);
 
 ?>

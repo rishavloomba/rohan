@@ -34,14 +34,14 @@ class SSP {
         return $db;
     }
 
-    static function simple ($request, $db_file, $sql) {
+    static function line ($request, $db_file, $sql) {
         $conn = self::db_connect($db_file);
         $data = self::sql_exec($conn, $sql);
-        $output = self::data_output($data);
+        $output = self::data_line($data);
         return $request . '(' . $output . ')';
     }
 
-    static function data_output ($data) {
+    static function data_line ($data) {
         $out = array();
         for ($i=0, $ien=count($data); $i<$ien; $i++) {
             $row[0] = strtotime($data[$i][0]) * 1000;

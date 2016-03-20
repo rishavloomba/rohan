@@ -450,6 +450,35 @@ $("#szse_cyb_submit").click(function(){
     </form>
     </div>
 </div>
+<div class="tab">
+    <h4>上海证券交易所基本指标 (www.sse.com.cn)</h4>
+    <form id="sse" action="show.php">
+        <input type="hidden" name="db" value="sse.com.cn.db" />
+        <input type="hidden" name="title" id="sse_title" />
+        <input type="hidden" name="sub" id="sse_sub" />
+        <select name="tb" id="sse_tb">
+            <option value="shsc">上海市场</option>
+            <option value="shag">上海A股</option>
+            <option value="shbg">上海B股</option>
+        </select>
+        <select name="col" id="sse_col">
+            <option value="pjsyl">平均市盈率</option>
+            <option value="sjzz">市价总值(亿元)</option>
+            <option value="ltsz">流通市值(亿元)</option>
+            <option value="cjl">成交量(万股)</option>
+            <option value="cjje">成交金额(亿元)</option>
+            <option value="cjbs">成交笔数(万笔)</option>
+        </select>
+        <button id="sse_submit">提交</button>
+        <script type="text/javascript">
+$("#sse_submit").click(function(){
+  $("#sse_title").val($("#sse_tb").find("option:selected").text() + $("#sse_col").find("option:selected").text());
+  $("#sse_sub").val($("#sse_col").find("option:selected").text());
+  $("#sse").submit;
+});
+        </script>
+    </form>
+</div>
 </div>
 </body>
 </html>
