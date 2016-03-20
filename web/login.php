@@ -24,6 +24,7 @@ if(!isset($_SESSION['user'])){
 ?>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>若海数据 - 用户登录</title>
 </head>
 <body>
