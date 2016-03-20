@@ -17,3 +17,6 @@ szse_szzb.csv,szse.cn.db,szzb
 szse_zxb.csv,szse.cn.db,zxb
 szse_cyb.csv,szse.cn.db,cyb
 sse_szzs.csv,sse.com.cn.db,szzs
+sse_shsc.csv,sse.com.cn.db,shsc
+sse_shag.csv,sse.com.cn.db,shag
+sse_shbg.csv,sse.com.cn.db,shbg
