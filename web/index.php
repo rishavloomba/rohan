@@ -27,6 +27,7 @@ $btn = array(
             <td><a href="logout.php">登出</a></td>
         </tr>
     </table>
+    <span style="color:red;">网站测试期间地址可能会有变动,请加微信公众号RohanKDD</span>
 </div>
 <div class="tab">
     <h4>中证指数板块市盈率 (www.csindex.com.cn)</h4>
