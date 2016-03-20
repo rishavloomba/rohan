@@ -34,6 +34,12 @@ class SSP {
         return $db;
     }
 
+    static function simple ($db_file, $sql) {
+        $conn = self::db_connect($db_file);
+        $data = self::sql_exec($conn, $sql);
+        return $data;
+    }
+
     static function line ($request, $db_file, $sql) {
         $conn = self::db_connect($db_file);
         $data = self::sql_exec($conn, $sql);

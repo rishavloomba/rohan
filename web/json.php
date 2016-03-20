@@ -1,6 +1,6 @@
 <?php
 
-require('ssp.php');
+require('auth.php');
 header('Content-type: application/json');
 
 $db = $_GET['db'];
@@ -12,6 +12,7 @@ if(isset($_GET['key']) and $_GET['key'] != '') {
     $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "`";
 }
 
-echo SSP::line($_GET['callback'], $db, $sql);
-
+if(in_array($db, $user_priv)) {
+    echo SSP::line($_GET['callback'], $db, $sql);
+}
 ?>

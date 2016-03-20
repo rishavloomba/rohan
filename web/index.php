@@ -1,3 +1,15 @@
+<?php
+require('auth.php');
+$btn_disabled = 'disabled="disabled"';
+$btn = array(
+    'cnindex' => ($user_valid and in_array('cnindex.com.cn.db',$user_priv))? '':$btn_disabled,
+    'csindex' => ($user_valid and in_array('csindex.com.cn.db',$user_priv))? '':$btn_disabled,
+    'szse' => ($user_valid and in_array('szse.cn.db',$user_priv))? '':$btn_disabled,
+    'sse' => ($user_valid and in_array('sse.com.cn.db',$user_priv))? '':$btn_disabled,
+);
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,6 +18,16 @@
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
 <body>
 <div id="container">
+<div class="tab">
+    <table border="1">
+        <tr>
+            <td>用户: <?php echo $user_name;?></td>
+            <td>等级: <?php echo $user_level;?></td>
+            <td>有效至: <?php echo $user_expire;?></td>
+            <td><a href="logout.php">登出</a></td>
+        </tr>
+    </table>
+</div>
 <div class="tab">
     <h4>中证指数板块市盈率 (www.csindex.com.cn)</h4>
     <form id="csindex_bk" action="show.php">
@@ -33,7 +55,7 @@
             <option value="pe6">半年均线</option>
             <option value="pe12">年均线</option>
         </select>
-        <button id="csindex_bk_submit">提交</button>
+        <button id="csindex_bk_submit" <?php echo $btn['csindex'];?>>提交</button>
         <script type="text/javascript">
 $("#csindex_bk_submit").click(function(){
   $("#csindex_bk_title").val($("#csindex_bk_val").find("option:selected").text() + $("#csindex_bk_tb").find("option:selected").text() + $("#csindex_bk_col").find("option:selected").text());
@@ -173,7 +195,7 @@ $("#csindex_bk_submit").click(function(){
             <option value="pe6">半年均线</option>
             <option value="pe12">年均线</option>
         </select>
-        <button id="csindex_hy_submit">提交</button>
+        <button id="csindex_hy_submit" <?php echo $btn['csindex'];?>">提交</button>
         <script type="text/javascript">
 $("#csindex_hy_submit").click(function(){
   $("#csindex_hy_title").val($("#csindex_hy_val").find("option:selected").text() + $("#csindex_hy_tb").find("option:selected").text() + $("#csindex_hy_col").find("option:selected").text());
@@ -314,7 +336,7 @@ $("#csindex_hy_submit").click(function(){
             <option value="gdsyl_jqpj">滚动市盈率加权平均</option>
             <option value="gdsyl_zws">滚动市盈率中位数</option>
         </select>
-        <button id="cnindex_submit">提交</button>
+        <button id="cnindex_submit" <?php echo $btn['cnindex'];?>>提交</button>
         <script type="text/javascript">
 $("#cnindex_submit").click(function(){
   $("#cnindex_title").val($("#cnindex_val").find("option:selected").text() + $("#cnindex_col").find("option:selected").text() + "(" + $("#cnindex_tb").find("option:selected").text() + ")");
@@ -346,7 +368,7 @@ $("#cnindex_submit").click(function(){
             <option value="股票成交金额（元）">股票成交金额</option>
             <option value="平均股票价格（元）">平均股票价格</option>
         </select>
-        <button id="szse_szsc_submit">提交</button>
+        <button id="szse_szsc_submit" <?php echo $btn['szse'];?>>提交</button>
         <script type="text/javascript">
 $("#szse_szsc_submit").click(function(){
   $("#szse_szsc_title").val("深圳市场" + $("#szse_szsc_val").find("option:selected").text());
@@ -375,7 +397,7 @@ $("#szse_szsc_submit").click(function(){
             <option value="总成交股数">总成交股数</option>
             <option value="总成交笔数">总成交笔数</option>
         </select>
-        <button id="szse_szzb_submit">提交</button>
+        <button id="szse_szzb_submit" <?php echo $btn['szse'];?>>提交</button>
         <script type="text/javascript">
 $("#szse_szzb_submit").click(function(){
   $("#szse_szzb_title").val("深市主板" + $("#szse_szzb_val").find("option:selected").text());
@@ -404,7 +426,7 @@ $("#szse_szzb_submit").click(function(){
             <option value="总成交股数">总成交股数</option>
             <option value="总成交笔数">总成交笔数</option>
         </select>
-        <button id="szse_zxb_submit">提交</button>
+        <button id="szse_zxb_submit" <?php echo $btn['szse'];?>>提交</button>
         <script type="text/javascript">
 $("#szse_zxb_submit").click(function(){
   $("#szse_zxb_title").val("中小板" + $("#szse_zxb_val").find("option:selected").text());
@@ -433,7 +455,7 @@ $("#szse_zxb_submit").click(function(){
             <option value="总成交股数">总成交股数</option>
             <option value="总成交笔数">总成交笔数</option>
         </select>
-        <button id="szse_cyb_submit">提交</button>
+        <button id="szse_cyb_submit" <?php echo $btn['szse'];?>>提交</button>
         <script type="text/javascript">
 $("#szse_cyb_submit").click(function(){
   $("#szse_cyb_title").val("创业板" + $("#szse_cyb_val").find("option:selected").text());
@@ -463,7 +485,7 @@ $("#szse_cyb_submit").click(function(){
             <option value="cjje">成交金额(亿元)</option>
             <option value="cjbs">成交笔数(万笔)</option>
         </select>
-        <button id="sse_submit">提交</button>
+        <button id="sse_submit" <?php echo $btn['sse'];?>>提交</button>
         <script type="text/javascript">
 $("#sse_submit").click(function(){
   $("#sse_title").val($("#sse_tb").find("option:selected").text() + $("#sse_col").find("option:selected").text());
