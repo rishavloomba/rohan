@@ -20,7 +20,7 @@ $btn = array(
 <body>
 <div id="container">
 <div class="tab">
-    <table border="1">
+    <table style="border-style:dashed;border-width:0.1em;">
         <tr>
             <td>用户: <?php echo $user_name;?></td>
             <td>等级: <?php echo $user_level;?></td>
