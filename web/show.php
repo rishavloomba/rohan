@@ -9,7 +9,7 @@ echo <<<END
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>{$_GET['title']}</title>
-<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/exporting.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/offline-exporting.js"></script>

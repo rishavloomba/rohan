@@ -6,7 +6,7 @@ session_start();
 $error_msg = "";
 
 if(!isset($_SESSION['user'])){
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']) and isset($_POST['username']) and isset($_POST['password']) and $_POST['username'] != '' and $_POST['password'] != ''){
         $auth1 = sha1($_POST['username']);
         $auth2 = sha1($_POST['password']);
         $sql = "select id from user where auth1='" . $auth1 . "' and auth2='" . $auth2 . "'";
@@ -20,6 +20,7 @@ if(!isset($_SESSION['user'])){
     }
 }else{
     header('Location: index.php');
+    exit();
 }
 ?>
 <!DOCTYPE HTML>

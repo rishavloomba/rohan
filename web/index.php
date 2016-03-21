@@ -16,7 +16,8 @@ $btn = array(
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>若海数据</title>
-<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
 <body>
 <div id="container">
 <div class="tab">
@@ -24,7 +25,7 @@ $btn = array(
         <tr>
             <td>用户: <?php echo $user_name;?></td>
             <td>有效至: <?php echo $user_expire;?></td>
-            <td><?php if($user_id == 1){echo '<a href="admin.php">管理用户</a>';} ?></td>
+            <td><?php if($_SESSION['user'] == 1){echo '<a href="admin.php">管理</a>';} ?></td>
         </tr>
         <tr>
             <td>等级: <?php echo $user_level;?></td>
