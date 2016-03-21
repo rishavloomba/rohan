@@ -20,14 +20,16 @@ $btn = array(
 <body>
 <div id="container">
 <div class="tab">
-    <table style="border-style:dashed;border-width:0.1em;">
+    <table style="border-style:dashed;border-width:0.1em;width:91%;">
         <tr>
             <td>用户: <?php echo $user_name;?></td>
-            <td>等级: <?php echo $user_level;?></td>
+            <td>有效至: <?php echo $user_expire;?></td>
+            <td><?php if($user_id == 1){echo '<a href="admin.php">管理用户</a>';} ?></td>
         </tr>
         <tr>
-            <td>有效至: <?php echo $user_expire;?></td>
+            <td>等级: <?php echo $user_level;?></td>
             <td><a href="logout.php">登出</a></td>
+            <td></td>
         </tr>
     </table>
     <span style="color:red;">网站测试期间地址可能会有变动,请加微信公众号RohanKDD</span>
