@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['user'])){
+    header('Location: login.php');
+    exit();
+}
 $sub = isset($_GET['sub']) ? $_GET['sub'] : $_GET['val'];
 $val = urlencode($_GET['val']);
 
@@ -76,7 +80,14 @@ $(function () {
                 sourceWidth: 1200
             },
             credits: {
-                text: '若海数据'
+                text: '微信公众号:RohanKDD',
+                href: '#',
+                style: {
+                    fontSize: '12px'
+                },
+                position: {
+                    y: -4
+                }
             }
         });
     });
