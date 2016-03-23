@@ -33,7 +33,7 @@ $btn = array(
             <td></td>
         </tr>
     </table>
-    <span style="color:red;">网站测试期间地址可能会有变动,请加微信公众号RohanKDD</span>
+    <span style="color:red;">网站测试期间，地址变动通知，原始数据获取等，请加微信公众号RohanKDD</span>
 </div>
 <fieldset style="width:90%;">
 <div class="tab">
