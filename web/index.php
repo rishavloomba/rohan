@@ -37,7 +37,7 @@ $btn = array(
 </div>
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>中证指数板块市盈率 (www.csindex.com.cn)</h4>
+    <h4>中证指数板块市盈率</h4>
     <form id="csindex_bk" action="show.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="name" />
@@ -73,7 +73,7 @@ $("#csindex_bk_submit").click(function(){
     </form>
 </div>
 <div class="tab">
-    <h4>中证指数行业市盈率 (www.csindex.com.cn)</h4>
+    <h4>中证指数行业市盈率</h4>
     <form id="csindex_hy" action="show.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="hyid" />
@@ -217,7 +217,7 @@ $("#csindex_hy_submit").click(function(){
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>巨潮指数行业市盈率 (www.cnindex.com.cn)</h4>
+    <h4>巨潮指数行业市盈率</h4>
     <form id="cnindex" action="show.php">
         <input type="hidden" name="db" value="cnindex.com.cn.db" />
         <input type="hidden" name="key" value="hyid" />
@@ -361,7 +361,7 @@ $("#cnindex_submit").click(function(){
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>深圳证券交易所基本指标 (www.szse.cn)</h4>
+    <h4>深圳证券交易所基本指标</h4>
     <div>
     <form id="szse_szsc" action="show.php">
         <input type="hidden" name="db" value="szse.cn.db" />
@@ -484,7 +484,7 @@ $("#szse_cyb_submit").click(function(){
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>上海证券交易所基本指标 (www.sse.com.cn)</h4>
+    <h4>上海证券交易所基本指标</h4>
     <form id="sse" action="show.php">
         <input type="hidden" name="db" value="sse.com.cn.db" />
         <input type="hidden" name="title" id="sse_title" />

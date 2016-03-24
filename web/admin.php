@@ -96,7 +96,7 @@ echo <<<END
     <input type="hidden" value="user_del" name="tb" />
     <h4>删除用户</h4>
     <table style="width:99%;text-align:left;">
-        <tr><td></td><td>户名</td><td>等级</td><td>有效至</td></tr>
+        <tr><td></td><td>用户</td><td>等级</td><td>有效至</td></tr>
         ${user_html}
     </table>
     <input type="submit" value="删除" name="submit" />
@@ -119,7 +119,7 @@ echo <<<END
     <form method="post" action="admin.php">
     <input type="hidden" value="level_del" name="tb" />
     <h4>删除等级</h4>
-    <table style="width:99%;text-align:left;">
+    <table style="width:99%;text-align:left;word-break:break-all;word-wrap:break-all;">
         <tr><td></td><td>等级</td><td>权限</td></tr>
         ${level_html}
     </table>
