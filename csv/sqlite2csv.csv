@@ -21,3 +21,4 @@ sse_shsc.csv,sse.com.cn.db,shsc
 sse_shag.csv,sse.com.cn.db,shag
 sse_shbg.csv,sse.com.cn.db,shbg
 kitco_london.csv,kitco.com.db,london_metal
+cffex_future.csv,cffex.com.cn.db,future
