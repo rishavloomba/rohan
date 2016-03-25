@@ -4,15 +4,21 @@ if(!isset($_SESSION['user'])){
     header('Location: login.php');
     exit();
 }
+$db = isset($_GET['db']) ? $_GET['db'] : '';
+$tb = isset($_GET['tb']) ? $_GET['tb'] : '';
+$col = isset($_GET['col']) ? $_GET['col'] : '';
+$key = isset($_GET['key']) ? $_GET['key'] : '';
+$val = isset($_GET['val']) ? urlencode($_GET['val']) : '';
+$nonzero = isset($_GET['nonzero']) ? $_GET['nonzero'] : '';
+$title = isset($_GET['title']) ? $_GET['title'] : '';
 $sub = isset($_GET['sub']) ? $_GET['sub'] : $_GET['val'];
-$val = urlencode($_GET['val']);
 
 echo <<<END
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{$_GET['title']}</title>
+<title>{$title}</title>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/exporting.js"></script>
@@ -33,7 +39,7 @@ Highcharts.setOptions({
     }
 });
 $(function () {
-    $.getJSON('./json.php?db={$_GET['db']}&tb={$_GET['tb']}&col={$_GET['col']}&key={$_GET['key']}&val={$val}&callback=?', function(data) {
+    $.getJSON('./json.php?db={$db}&tb={$tb}&col={$col}&key={$key}&val={$val}&nonzero={$nonzero}&callback=?', function(data) {
         $('#container').highcharts('StockChart', {
             rangeSelector: {
                 selected: 1,
@@ -46,7 +52,7 @@ $(function () {
                 inputDateFormat: "%Y-%m-%d"
             },
             title: {
-                text: '{$_GET['title']}'
+                text: '{$title}'
             },
             series: [{
                 name : '{$sub}',
@@ -75,7 +81,7 @@ $(function () {
                 }
             },
             exporting: {
-                filename: '{$_GET['title']}',
+                filename: '{$title}',
                 sourceHeight: 600,
                 sourceWidth: 1200
             },

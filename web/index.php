@@ -6,6 +6,7 @@ $btn = array(
     'csindex' => ($user_valid and in_array('csindex.com.cn.db',$user_priv))? '':$btn_disabled,
     'szse' => ($user_valid and in_array('szse.cn.db',$user_priv))? '':$btn_disabled,
     'sse' => ($user_valid and in_array('sse.com.cn.db',$user_priv))? '':$btn_disabled,
+    'kitco' => ($user_valid and in_array('kitco.com.db',$user_priv))? '':$btn_disabled,
 );
 
 ?>
@@ -35,6 +36,7 @@ $btn = array(
     </table>
     <span style="color:red;">网站测试期间，地址变动通知，原始数据获取等，请加微信公众号RohanKDD</span>
 </div>
+<br />
 <fieldset style="width:90%;">
 <div class="tab">
     <h4>中证指数板块市盈率</h4>
@@ -42,6 +44,7 @@ $btn = array(
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="name" />
         <input type="hidden" name="title" id="csindex_bk_title" />
+        <input type="hidden" name="sub" id="csindex_bk_sub" />
         <select name="val" id="csindex_bk_val">
             <option value="沪深A股">沪深A股</option>
             <option value="上海A股">上海A股</option>
@@ -67,6 +70,7 @@ $btn = array(
         <script type="text/javascript">
 $("#csindex_bk_submit").click(function(){
   $("#csindex_bk_title").val($("#csindex_bk_val").find("option:selected").text() + $("#csindex_bk_tb").find("option:selected").text() + $("#csindex_bk_col").find("option:selected").text());
+  $("#csindex_bk_sub").val($("#csindex_bk_tb").find("option:selected").text());
   $("#csindex_bk").submit;
 });
         </script>
@@ -513,6 +517,35 @@ $("#sse_submit").click(function(){
     </form>
 </div>
 </fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>伦敦贵金属行情</h4>
+    <form id="kitco" action="show.php">
+        <input type="hidden" name="db" value="kitco.com.db" />
+        <input type="hidden" name="title" id="kitco_title" />
+        <input type="hidden" name="sub" id="kitco_sub" />
+        <input type="hidden" name="tb" value="london_metal" />
+        <input type="hidden" name="nonzero" value="1" />
+        <select name="col" id="kitco_col">
+            <option value="au_pm">金</option>
+            <option value="ag_pm">银</option>
+            <option value="pt_pm">铂</option>
+            <option value="pd_pm">钯</option>
+        </select>
+        <button id="kitco_submit" <?php echo $btn['kitco'];?>>提交</button>
+        <script type="text/javascript">
+$("#kitco_submit").click(function(){
+  $("#kitco_title").val('伦敦贵金属行情 - ' + $("#kitco_col").find("option:selected").text());
+  $("#kitco_sub").val($("#kitco_col").find("option:selected").text());
+  $("#kitco").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+
 </div>
 </body>
 </html>
