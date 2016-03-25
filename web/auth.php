@@ -5,7 +5,7 @@ $user_valid = false;
 $user_name = '';
 $user_expire = '';
 $user_level = '';
-$user_priv = array();
+$user_priv = '';
 
 if(!isset($_SESSION['user'])){
     header('Location: login.php');
@@ -19,7 +19,7 @@ if(!isset($_SESSION['user'])){
         $user_valid = true;
     }
     $user_level = $priv_data[0][2];
-    $user_priv = explode(";",$priv_data[0][3]);
+    $user_priv = $priv_data[0][3];
 }
 
 ?>

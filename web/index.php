@@ -2,11 +2,11 @@
 require('auth.php');
 $btn_disabled = 'disabled="disabled"';
 $btn = array(
-    'cnindex' => ($user_valid and in_array('cnindex.com.cn.db',$user_priv))? '':$btn_disabled,
-    'csindex' => ($user_valid and in_array('csindex.com.cn.db',$user_priv))? '':$btn_disabled,
-    'szse' => ($user_valid and in_array('szse.cn.db',$user_priv))? '':$btn_disabled,
-    'sse' => ($user_valid and in_array('sse.com.cn.db',$user_priv))? '':$btn_disabled,
-    'kitco' => ($user_valid and in_array('kitco.com.db',$user_priv))? '':$btn_disabled,
+    'cnindex' => ($user_valid and strpos('cnindex.com.cn.db',$user_priv) !== false)? '':$btn_disabled,
+    'csindex' => ($user_valid and strpos('csindex.com.cn.db',$user_priv) !== false)? '':$btn_disabled,
+    'szse' => ($user_valid and strpos('szse.cn.db',$user_priv) !== false)? '':$btn_disabled,
+    'sse' => ($user_valid and strpos('sse.com.cn.db',$user_priv) !== false)? '':$btn_disabled,
+    'kitco' => ($user_valid and strpos('kitco.com.db',$user_priv) !== false)? '':$btn_disabled,
 );
 
 ?>
