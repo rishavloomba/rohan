@@ -14,7 +14,7 @@ if(isset($_GET['key']) and $_GET['key'] != '') {
     $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "`";
 }
 
-if($user_valid and strpos($db,$user_priv) !== false) {
+if($user_valid and strpos($user_priv,$db) !== false) {
     echo SSP::line($_GET['callback'], $db, $sql);
 }
 ?>
