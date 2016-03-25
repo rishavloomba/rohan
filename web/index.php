@@ -7,6 +7,7 @@ $btn = array(
     'szse' => ($user_valid and strpos($user_priv,'szse.cn.db') !== false)? '':$btn_disabled,
     'sse' => ($user_valid and strpos($user_priv,'sse.com.cn.db') !== false)? '':$btn_disabled,
     'kitco' => ($user_valid and strpos($user_priv,'kitco.com.db') !== false)? '':$btn_disabled,
+    'cffex' => ($user_valid and strpos($user_priv,'cffex.com.cn.db') !== false)? '':$btn_disabled,
 );
 
 ?>
@@ -512,6 +513,53 @@ $("#sse_submit").click(function(){
   $("#sse_title").val($("#sse_tb").find("option:selected").text() + $("#sse_col").find("option:selected").text());
   $("#sse_sub").val($("#sse_col").find("option:selected").text());
   $("#sse").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>中国金融期货交易所期货行情</h4>
+    <form id="cffex" action="show.php">
+        <input type="hidden" name="db" value="cffex.com.cn.db" />
+        <input type="hidden" name="title" id="cffex_title" />
+        <input type="hidden" name="sub" id="cffex_sub" />
+        <input type="hidden" name="tb" value="future" />
+        <input type="hidden" name="key" value="name" />
+        <select name="val" id="cffex_val">
+            <option value="IF1">沪深300股指期货(IF)当月连续</option>
+            <option value="IF2">沪深300股指期货(IF)下月连续</option>
+            <option value="IF3">沪深300股指期货(IF)下季连续</option>
+            <option value="IF4">沪深300股指期货(IF)隔季连续</option>
+            <option value="IH1">上证50股指期货(IH)当月连续</option>
+            <option value="IH2">上证50股指期货(IH)下月连续</option>
+            <option value="IH3">上证50股指期货(IH)下季连续</option>
+            <option value="IH4">上证50股指期货(IH)隔季连续</option>
+            <option value="IC1">中证500股指期货(IC)当月连续</option>
+            <option value="IC2">中证500股指期货(IC)下月连续</option>
+            <option value="IC3">中证500股指期货(IC)下季连续</option>
+            <option value="IC4">中证500股指期货(IC)隔季连续</option>
+            <option value="TF1">5年期国债期货(TF)当季连续</option>
+            <option value="TF2">5年期国债期货(TF)下季连续</option>
+            <option value="TF3">5年期国债期货(TF)隔季连续</option>
+            <option value="T1">10年期国债期货(T)当季连续</option>
+            <option value="T2">10年期国债期货(T)下季连续</option>
+            <option value="T3">10年期国债期货(T)隔季连续</option>
+        </select>
+        <select name="col" id="cffex_col">
+            <option value="balance">结算价</option>
+            <option value="volume">成交量</option>
+            <option value="amount">成交金额</option>
+            <option value="position">持仓量</option>
+        </select>
+        <button id="cffex_submit" <?php echo $btn['cffex'];?>>提交</button>
+        <script type="text/javascript">
+$("#cffex_submit").click(function(){
+  $("#cffex_title").val($("#cffex_val").find("option:selected").text() + $("#cffex_col").find("option:selected").text());
+  $("#cffex_sub").val($("#cffex_col").find("option:selected").text());
+  $("#cffex").submit;
 });
         </script>
     </form>
