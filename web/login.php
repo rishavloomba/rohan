@@ -28,6 +28,8 @@ if(!isset($_SESSION['user'])){
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据 - 用户登录</title>
 </head>
 <body>
