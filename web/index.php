@@ -43,11 +43,10 @@ $btn = array(
 <fieldset style="width:90%;">
 <div class="tab">
     <h4>中证指数板块市盈率</h4>
-    <form id="csindex_bk" action="show.php">
+    <form id="csindex_bk" action="showma5.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="name" />
         <input type="hidden" name="title" id="csindex_bk_title" />
-        <input type="hidden" name="sub" id="csindex_bk_sub" />
         <select name="val" id="csindex_bk_val">
             <option value="沪深A股">沪深A股</option>
             <option value="上海A股">上海A股</option>
@@ -62,18 +61,10 @@ $btn = array(
             <option value="bk_sjl">市净率</option>
             <option value="bk_gxl">股息率</option>
         </select>
-        <select name="col" id="csindex_bk_col">
-            <option value="pe">日均线</option>
-            <option value="pe1">月均线</option>
-            <option value="pe3">季均线</option>
-            <option value="pe6">半年均线</option>
-            <option value="pe12">年均线</option>
-        </select>
         <button id="csindex_bk_submit" <?php echo $btn['csindex'];?>>提交</button>
         <script type="text/javascript">
 $("#csindex_bk_submit").click(function(){
-  $("#csindex_bk_title").val($("#csindex_bk_val").find("option:selected").text() + $("#csindex_bk_tb").find("option:selected").text() + $("#csindex_bk_col").find("option:selected").text());
-  $("#csindex_bk_sub").val($("#csindex_bk_tb").find("option:selected").text());
+  $("#csindex_bk_title").val($("#csindex_bk_val").find("option:selected").text() + $("#csindex_bk_tb").find("option:selected").text());
   $("#csindex_bk").submit;
 });
         </script>
@@ -81,11 +72,10 @@ $("#csindex_bk_submit").click(function(){
 </div>
 <div class="tab">
     <h4>中证指数行业市盈率</h4>
-    <form id="csindex_hy" action="show.php">
+    <form id="csindex_hy" action="showma5.php">
         <input type="hidden" name="db" value="csindex.com.cn.db" />
         <input type="hidden" name="key" value="hyid" />
         <input type="hidden" name="title" id="csindex_hy_title" />
-        <input type="hidden" name="sub" id="csindex_hy_sub" />
         <select name="val" id="csindex_hy_val" style="width:10em;">
             <option value="A">A 农、林、牧、渔业</option>
             <option value="01">01 农业</option>
@@ -203,18 +193,10 @@ $("#csindex_bk_submit").click(function(){
             <option value="hy_sjl">市净率</option>
             <option value="hy_gxl">股息率</option>
         </select>
-        <select name="col" id="csindex_hy_col">
-            <option value="pe">日均线</option>
-            <option value="pe1">月均线</option>
-            <option value="pe3">季均线</option>
-            <option value="pe6">半年均线</option>
-            <option value="pe12">年均线</option>
-        </select>
         <button id="csindex_hy_submit" <?php echo $btn['csindex'];?>>提交</button>
         <script type="text/javascript">
 $("#csindex_hy_submit").click(function(){
-  $("#csindex_hy_title").val($("#csindex_hy_val").find("option:selected").text() + $("#csindex_hy_tb").find("option:selected").text() + $("#csindex_hy_col").find("option:selected").text());
-  $("#csindex_hy_sub").val($("#csindex_hy_val").find("option:selected").text());
+  $("#csindex_hy_title").val($("#csindex_hy_val").find("option:selected").text() + $("#csindex_hy_tb").find("option:selected").text());
   $("#csindex_hy").submit;
 });
         </script>
