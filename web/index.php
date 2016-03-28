@@ -37,7 +37,7 @@ $btn = array(
             <td></td>
         </tr>
     </table>
-    <span style="color:red;">网站测试期间，地址变动通知，原始数据获取等，请加微信公众号RohanKDD</span>
+    <span style="color:red;"><?php echo $user_msg; ?></span>
 </div>
 <br />
 <fieldset style="width:90%;">
