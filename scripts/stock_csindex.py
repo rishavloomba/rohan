@@ -2,11 +2,18 @@ import httplib2
 import time
 import datetime
 import csv
+import argparse
 from bs4 import BeautifulSoup
 
-sdate = '2016-01-01'
-edate = '2016-03-30'
-stock = '600436'
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", required=True)
+parser.add_argument("-s", default="2010-06-17")
+parser.add_argument("-e", )
+args = parser.parse_args()
+
+stock = args.i
+sdate = args.s
+edate = args.e if args.e else time.strftime('%Y-%m-%d')
 
 csvfile = '%s.csv' % stock
 
@@ -40,7 +47,7 @@ def main():
     e = datetime.datetime.strptime(edate, '%Y-%m-%d')
     f = file(csvfile, 'wb')
     w = csv.writer(f)
-    while s < e:
+    while s <= e:
         if s.weekday() not in [5,6]:
             d = s.strftime('%Y-%m-%d')
             data = parse_web(d)
@@ -51,3 +58,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
