@@ -48,6 +48,7 @@ class SSP {
     }
 
     static function data_line ($data) {
+		date_default_timezone_set('UTC');
         $out = array();
         for ($i=0, $ien=count($data); $i<$ien; $i++) {
             $row[0] = strtotime($data[$i][0]) * 1000;
