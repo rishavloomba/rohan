@@ -8,6 +8,7 @@ $btn = array(
     'sse' => ($user_valid and strpos($user_priv,'sse.com.cn.db') !== false)? '':$btn_disabled,
     'kitco' => ($user_valid and strpos($user_priv,'kitco.com.db') !== false)? '':$btn_disabled,
     'cffex' => ($user_valid and strpos($user_priv,'cffex.com.cn.db') !== false)? '':$btn_disabled,
+    'chinabond' => ($user_valid and strpos($user_priv,'chinabond.com.cn.db') !== false)? '':$btn_disabled,
 );
 
 ?>
@@ -571,6 +572,46 @@ $("#kitco_submit").click(function(){
   $("#kitco_title").val('伦敦贵金属行情 - ' + $("#kitco_col").find("option:selected").text());
   $("#kitco_sub").val($("#kitco_col").find("option:selected").text());
   $("#kitco").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>国债收益率</h4>
+    <form id="chinabond" action="show.php">
+        <input type="hidden" name="db" value="chinabond.com.cn.db" />
+        <input type="hidden" name="title" id="chinabond_title" />
+        <input type="hidden" name="sub" id="chinabond_sub" />
+        <input type="hidden" name="tb" value="bond" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="rate" />
+        <select name="val" id="chinabond_col">
+            <option value="0d">0d</option>
+            <option value="1m">1m</option>
+            <option value="2m">2m</option>
+            <option value="3m">3m</option>
+            <option value="6m">6m</option>
+            <option value="9m">9m</option>
+            <option value="1y">1y</option>
+            <option value="3y">3y</option>
+            <option value="5y">5y</option>
+            <option value="7y">7y</option>
+            <option value="10y">10y</option>
+            <option value="15y">15y</option>
+            <option value="20y">20y</option>
+            <option value="30y">30y</option>
+            <option value="40y">40y</option>
+            <option value="50y">50y</option>
+        </select>
+        <button id="chinabond_submit" <?php echo $btn['chinabond'];?>>提交</button>
+        <script type="text/javascript">
+$("#chinabond_submit").click(function(){
+  $("#chinabond_title").val('国债收益率 - ' + $("#chinabond_col").find("option:selected").text());
+  $("#chinabond_sub").val($("#chinabond_col").find("option:selected").text());
+  $("#chinabond").submit;
 });
         </script>
     </form>
