@@ -41,8 +41,8 @@ if(!isset($_SESSION['user'])){
             <tr><td>密码</td><td><input type="password" id="password" name="password" /></td></tr>
             <tr><td></td><td><input type="submit" value="登录" name="submit"/></td></tr>
         </table>
-        <span style="color: green">请使用IE9以上版本浏览器，或最新版Firefox、Chrome浏览器</span>
-        <br />
+        <span style="color: green">本站点提供各种金融数据分享</span><br />
+        <span style="color: green">请使用IE9以上版本浏览器，或最新版Firefox、Chrome浏览器进行登录</span><br />
     <?php echo '<span style="color: red">'.$error_msg.'</span>'; ?>
     </fieldset>
 </form>
