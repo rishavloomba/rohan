@@ -9,6 +9,7 @@ $btn = array(
     'kitco' => ($user_valid and strpos($user_priv,'kitco.com.db') !== false)? '':$btn_disabled,
     'cffex' => ($user_valid and strpos($user_priv,'cffex.com.cn.db') !== false)? '':$btn_disabled,
     'chinabond' => ($user_valid and strpos($user_priv,'chinabond.com.cn.db') !== false)? '':$btn_disabled,
+    'shibor' => ($user_valid and strpos($user_priv,'shibor.org.db') !== false)? '':$btn_disabled,
 );
 
 ?>
@@ -586,7 +587,7 @@ $("#kitco_submit").click(function(){
         <input type="hidden" name="tb" value="bond" />
         <input type="hidden" name="key" value="name" />
         <input type="hidden" name="col" value="rate" />
-        <select name="val" id="chinabond_col">
+        <select name="val" id="chinabond_val">
             <option value="0d">0d</option>
             <option value="1m">1m</option>
             <option value="2m">2m</option>
@@ -608,8 +609,34 @@ $("#kitco_submit").click(function(){
         <script type="text/javascript">
 $("#chinabond_submit").click(function(){
   $("#chinabond_title").val('国债收益率 - ' + $("#chinabond_col").find("option:selected").text());
-  $("#chinabond_sub").val($("#chinabond_col").find("option:selected").text());
+  $("#chinabond_sub").val($("#chinabond_val").find("option:selected").text());
   $("#chinabond").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>上海银行间拆放利率</h4>
+    <form id="shibor" action="shibor.php">
+        <input type="hidden" name="title" id="shibor_title" />
+        <select name="val" id="shibor_val">
+            <option value="o_n">O/N</option>
+            <option value="w1">1W</option>
+            <option value="w2">2W</option>
+            <option value="m1">1M</option>
+            <option value="m3">3M</option>
+            <option value="m6">6M</option>
+            <option value="m9">9M</option>
+            <option value="y1">1Y</option>
+        </select>
+        <button id="shibor_submit" <?php echo $btn['shibor'];?>>提交</button>
+        <script type="text/javascript">
+$("#shibor_submit").click(function(){
+  $("#shibor_title").val('上海银行间拆放利率 - ' + $("#shibor_val").find("option:selected").text());
+  $("#shibor").submit;
 });
         </script>
     </form>
