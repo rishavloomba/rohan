@@ -4,7 +4,6 @@ if(!isset($_SESSION['user'])){
     header('Location: login.php');
     exit();
 }
-$db = isset($_GET['db']) ? $_GET['db'] : '';
 $tb = isset($_GET['tb']) ? $_GET['tb'] : '';
 $key = isset($_GET['key']) ? $_GET['key'] : '';
 $val = isset($_GET['val']) ? urlencode($_GET['val']) : '';
@@ -103,7 +102,7 @@ $(function () {
         });
     }
     $.each(names, function (i, name) {
-        $.getJSON('./json.php?db={$db}&tb={$tb}&key={$key}&val={$val}&col=' + cols[i] + '&callback=?', function (data) {
+        $.getJSON('./json.php?db=csindex.com.cn.db&tb={$tb}&key={$key}&val={$val}&col=' + cols[i] + '&callback=?', function (data) {
             seriesOptions[i] = {
                 name: name,
                 data: data

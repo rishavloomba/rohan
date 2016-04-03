@@ -44,8 +44,7 @@ $btn = array(
 <fieldset style="width:90%;">
 <div class="tab">
     <h4>中证指数板块市盈率</h4>
-    <form id="csindex_bk" action="showma5.php">
-        <input type="hidden" name="db" value="csindex.com.cn.db" />
+    <form id="csindex_bk" action="csindex.php">
         <input type="hidden" name="key" value="name" />
         <input type="hidden" name="title" id="csindex_bk_title" />
         <select name="val" id="csindex_bk_val">
@@ -73,8 +72,7 @@ $("#csindex_bk_submit").click(function(){
 </div>
 <div class="tab">
     <h4>中证指数行业市盈率</h4>
-    <form id="csindex_hy" action="showma5.php">
-        <input type="hidden" name="db" value="csindex.com.cn.db" />
+    <form id="csindex_hy" action="csindex.php">
         <input type="hidden" name="key" value="hyid" />
         <input type="hidden" name="title" id="csindex_hy_title" />
         <select name="val" id="csindex_hy_val" style="width:10em;">
