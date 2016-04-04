@@ -579,7 +579,7 @@ $("#kitco_submit").click(function(){
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>国债收益率</h4>
+    <h4>中国国债收益率（到期）</h4>
     <form id="chinabond" action="show.php">
         <input type="hidden" name="db" value="chinabond.com.cn.db" />
         <input type="hidden" name="title" id="chinabond_title" />
@@ -608,7 +608,7 @@ $("#kitco_submit").click(function(){
         <button id="chinabond_submit" <?php echo $btn['chinabond'];?>>提交</button>
         <script type="text/javascript">
 $("#chinabond_submit").click(function(){
-  $("#chinabond_title").val('国债收益率 - ' + $("#chinabond_col").find("option:selected").text());
+  $("#chinabond_title").val('中国国债收益率（到期） - ' + $("#chinabond_val").find("option:selected").text());
   $("#chinabond_sub").val($("#chinabond_val").find("option:selected").text());
   $("#chinabond").submit;
 });
@@ -619,7 +619,7 @@ $("#chinabond_submit").click(function(){
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
-    <h4>上海银行间拆放利率</h4>
+    <h4>上海银行间拆放利率(Shanghai Interbank Offered Rate)</h4>
     <form id="shibor" action="shibor.php">
         <input type="hidden" name="title" id="shibor_title" />
         <select name="val" id="shibor_val">

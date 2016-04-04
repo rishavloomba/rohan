@@ -43,6 +43,7 @@ if(!isset($_SESSION['user'])){
         </table>
         <span style="color: green">本站点提供各种金融数据分享</span><br />
         <span style="color: green">请使用IE9以上版本浏览器，或最新版Firefox、Chrome浏览器进行登录</span><br />
+        <span style="color: green">测试用户的用户名和密码都是test</span><br />
     <?php echo '<span style="color: red">'.$error_msg.'</span>'; ?>
     </fieldset>
 </form>
