@@ -43,8 +43,7 @@ $(function () {
         $('#container').highcharts('StockChart', {
             rangeSelector: {
                 selected: 1,
-                buttons: [{type: 'month', count: 1, text: '一月'},
-                          {type: 'month', count: 3, text: '三月'},
+                buttons: [{type: 'month', count: 3, text: '三月'},
                           {type: 'month', count: 6, text: '六月'},
                           {type: 'ytd', text: '今年'},
                           {type: 'year', count: 1, text: '一年'},
@@ -53,6 +52,13 @@ $(function () {
             },
             title: {
                 text: '{$title}'
+            },
+            plotOptions: {
+                series: {
+                    dataGrouping: {
+                        enabled: false
+                    }
+                }
             },
             series: [{
                 name : '{$sub}',
