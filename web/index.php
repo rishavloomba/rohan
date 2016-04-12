@@ -10,6 +10,7 @@ $btn = array(
     'cffex' => ($user_valid and strpos($user_priv,'cffex.com.cn.db') !== false)? '':$btn_disabled,
     'chinabond' => ($user_valid and strpos($user_priv,'chinabond.com.cn.db') !== false)? '':$btn_disabled,
     'shibor' => ($user_valid and strpos($user_priv,'shibor.org.db') !== false)? '':$btn_disabled,
+    'hsi' => ($user_valid and strpos($user_priv,'hsi.com.hk.db') !== false)? '':$btn_disabled,
 );
 
 ?>
@@ -637,6 +638,36 @@ $("#chinabond_submit").click(function(){
 $("#shibor_submit").click(function(){
   $("#shibor_title").val('上海银行间拆放利率 - ' + $("#shibor_val").find("option:selected").text());
   $("#shibor").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>恒生指数</h4>
+    <form id="hsi" action="hsi.php">
+        <input type="hidden" name="title" id="hsi_title" />
+        <input type="hidden" name="sub" id="hsi_sub" />
+        <select name="col" id="hsi_col">
+            <option value="hsi">恒生指数</option>
+            <option value="hscei">恒生中国企业指数</option>
+            <option value="finance">恒生指数金融行业</option>
+            <option value="utilities">恒生指数公用事业</option>
+            <option value="properties">恒生指数房地产行业</option>
+            <option value="com_ind">恒生指数工商行业</option>
+        </select>
+        <select name="tb2" id="hsi_tb2">
+            <option value="pe">市盈率</option>
+            <option value="dy">周息率</option>
+        </select>
+        <button id="hsi_submit" <?php echo $btn['hsi'];?>>提交</button>
+        <script type="text/javascript">
+$("#hsi_submit").click(function(){
+  $("#hsi_title").val($("#hsi_col").find("option:selected").text() + $("#hsi_tb2").find("option:selected").text());
+  $("#hsi_sub").val($("#hsi_tb2").find("option:selected").text());
+  $("#hsi").submit;
 });
         </script>
     </form>
