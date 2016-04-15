@@ -6,7 +6,7 @@ import re
 from bs4 import BeautifulSoup
 
 if len(sys.argv) < 2:
-    dt = time.strftime("%Y-%m-%d")
+    dt = time.strftime("%Y-%m-%d", time.gmtime(time.time()-86400))
 else:
     dt = sys.argv[1]
 
