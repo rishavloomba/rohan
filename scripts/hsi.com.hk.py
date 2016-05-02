@@ -4,8 +4,11 @@ import StringIO
 import xlrd
 import datetime
 
-fnames = ['hsi_pe.xls','hscei_pe.xls', 'hsi_dy.xls','hscei_dy.xls']
-sqlite_file = 'hsi.com.hk.db'
+urls = ['http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/pe/hsi.xls',
+        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/pe/hscei.xls',
+        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/dy/hsi.xls',
+        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/dy/hscei.xls']
+sqlite_file = 'sqlite/hsi.com.hk.db'
 
 tables = ['hsi_pe','hscei_pe','hsi_dy','hscei_dy']
 cols = [6,2,6,2]
@@ -19,10 +22,9 @@ def insert_sqlite(num, entries):
     conn.close()
 
 def parse_web(num):
-    f = open(fnames[num],'rb')
-    filedata = f.read()
-    f.close()
-    return filedata
+    http = httplib2.Http()
+    response, content = http.request(urls[num])
+    return content
 
 def parse_excel(num, filedata):
     workbook = xlrd.open_workbook(file_contents=filedata)
