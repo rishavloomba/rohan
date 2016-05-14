@@ -11,6 +11,7 @@ $btn = array(
     'chinabond' => ($user_valid and strpos($user_priv,'chinabond.com.cn.db') !== false)? '':$btn_disabled,
     'shibor' => ($user_valid and strpos($user_priv,'shibor.org.db') !== false)? '':$btn_disabled,
     'hsi' => ($user_valid and strpos($user_priv,'hsi.com.hk.db') !== false)? '':$btn_disabled,
+    'chinacp' => ($user_valid and strpos($user_priv,'chinacp.com.cn.db') !== false)? '':$btn_disabled,
 );
 
 ?>
@@ -668,6 +669,39 @@ $("#hsi_submit").click(function(){
   $("#hsi_title").val($("#hsi_col").find("option:selected").text() + $("#hsi_tb2").find("option:selected").text());
   $("#hsi_sub").val($("#hsi_tb2").find("option:selected").text());
   $("#hsi").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+<fieldset style="width:90%;">
+<div class="tab">
+    <h4>中国票据</h4>
+    <form id="chinacp" action="show.php">
+        <input type="hidden" name="db" value="chinacp.com.cn.db" />
+        <input type="hidden" name="title" id="chinacp_title" />
+        <input type="hidden" name="sub" id="chinacp_sub" />
+        <input type="hidden" name="tb" value="piaoju" />
+        <input type="hidden" name="col" id="chinacp_col" />
+        <input type="hidden" name="nonzero" value="1" />
+        <select name="col1" id="chinacp_col1">
+            <option value="1">回购式正回购</option>
+            <option value="2">回购式逆回购</option>
+            <option value="3">买断式买入</option>
+            <option value="4">买断式卖出</option>
+        </select>
+        <select name="col2" id="chinacp_col2">
+            <option value="rate">平均利率(%)</option>
+            <option value="amount">金额(亿)</option>
+        </select>
+        <button id="chinacp_submit" <?php echo $btn['chinacp'];?>>提交</button>
+        <script type="text/javascript">
+$("#chinacp_submit").click(function(){
+  $("#chinacp_title").val('中国票据 - ' + $("#chinacp_col1").find("option:selected").text() + $("#chinacp_col2").find("option:selected").text());
+  $("#chinacp_sub").val($("#chinacp_col2").find("option:selected").text());
+  $("#chinacp_col").val($("#chinacp_col2").find("option:selected").val() + $("#chinacp_col1").find("option:selected").val());
+  $("#chinacp").submit;
 });
         </script>
     </form>

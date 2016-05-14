@@ -9,7 +9,7 @@ if(isset($_GET['key']) and $_GET['key'] != '') {
     $val = urldecode($_GET['val']);
     $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "` WHERE " . $_GET['key'] . " = '" . $val . "'";
 } elseif(isset($_GET['nonzero']) and $_GET['nonzero'] != '') {
-    $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "` WHERE " . $_GET['col'] . " != '0'";
+    $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "` WHERE " . $_GET['col'] . " != '0' and " . $_GET['col'] . " != ''";
 } else {
     $sql = "SELECT `dt`,`" . $_GET['col'] . "` FROM `" . $_GET['tb'] . "`";
 }
