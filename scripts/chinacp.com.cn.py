@@ -29,6 +29,8 @@ def parse_item():
     response, content = http.request(url)
     j = json.loads(content)
     entry = filter(lambda x: x[2] == dt, j['aaData'])
+    if len(entry) == 0:
+        exit(0)
     item = re.findall(r'statQtItemID=(\d+)', entry[0][1])[0]
     return item
 
