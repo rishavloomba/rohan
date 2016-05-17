@@ -6,7 +6,7 @@ import sys
 
 dt = time.strftime("%Y%m%d")
 sqlite_file = 'sqlite/sse.com.cn.db'
-url = 'http://yunhq.sse.com.cn:32041/v1/sh1/dayk/000001?select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume%2Camount&begin=-2&end=-1'
+url = 'http://yunhq.sse.com.cn:32041/v1/sh1/dayk/000001?select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume%2Camount&begin=-8&end=-7'
 sql = 'INSERT INTO szzs (dt,open,high,low,close,volume,amount) VALUES ("%s","%s","%s","%s","%s","%s","%s")'
 
 if len(sys.argv) < 2:
