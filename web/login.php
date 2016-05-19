@@ -1,5 +1,5 @@
 <?php
-
+require('common.php');
 require('ssp.php');
 session_start();
 
@@ -31,6 +31,7 @@ if(!isset($_SESSION['user'])){
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据 - 用户登录</title>
+    <?php echo $bd_stat; ?>
 </head>
 <body>
 <form method="post" action="login.php">
@@ -47,14 +48,5 @@ if(!isset($_SESSION['user'])){
     <?php echo '<span style="color: red">'.$error_msg.'</span>'; ?>
     </fieldset>
 </form>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?ee5755e6c222a7b48bb3afd1d06fd5bc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+require('common.php');
 session_start();
 if(!isset($_SESSION['user'])){
     header('Location: login.php');
@@ -19,6 +20,7 @@ echo <<<END
 <script type="text/javascript" src="http://cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/exporting.js"></script>
 <script type="text/javascript" src="http://cdn.bootcss.com/highcharts/4.2.3/modules/offline-exporting.js"></script>
+{$bd_stat}
 <script type="text/javascript">
 Highcharts.setOptions({
     lang: {

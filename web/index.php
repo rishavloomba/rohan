@@ -1,4 +1,5 @@
 <?php
+require('common.php');
 require('auth.php');
 $btn_disabled = 'disabled="disabled"';
 $btn = array(
@@ -25,6 +26,7 @@ $btn = array(
     <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据</title>
     <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <?php echo $bd_stat; ?>
 </head>
 <body>
 <div id="container">
@@ -710,14 +712,5 @@ $("#chinacp_submit").click(function(){
 <br />
 
 </div>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?ee5755e6c222a7b48bb3afd1d06fd5bc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </body>
 </html>
