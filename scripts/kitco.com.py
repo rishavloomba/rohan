@@ -67,7 +67,7 @@ def parse_web():
     if response['status'] == '200':
         soup = BeautifulSoup(content, 'lxml')
         tables = soup.select('table')
-        for tr in tables[14].select('tr'):
+        for tr in tables[15].select('tr'):
             tds = tr.select('td')
             rows = map(lambda x: x.text.strip(), tds)
             if len(rows) == 8 and dt == rows[0]:
