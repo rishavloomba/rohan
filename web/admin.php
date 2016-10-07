@@ -105,6 +105,10 @@ echo <<<END
 <body>
 <div id="container">
 <fieldset style="width:98%;">
+    <span><a href="index.php">返回首页</a></span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="../downloads/">文件管理</a></span>
+</fieldset>
+<br />
+<fieldset style="width:98%;">
     <form method="post" action="admin.php">
     <input type="hidden" value="user_add" name="tb" />
     <h4>添加用户</h4>

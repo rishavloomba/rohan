@@ -15,6 +15,16 @@ $btn = array(
     'chinacp' => ($user_valid and strpos($user_priv,'chinacp.com.cn.db') !== false)? '':$btn_disabled,
 );
 
+$files_html = '';
+$dir = '../../downloads';
+$all_files = scandir($dir);
+foreach ($all_files as $filename) {
+    if (is_file("$dir/$filename") and $filename != 'index.php') {
+        $files_html .= "<li><a href='../downloads/$filename'>$filename</a></li>\n";
+    }
+}
+$downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<br /><fieldset style="width:90%;"><div class="tab"><h4>文件下载</h4><ul>' . $files_html . '</ul></div></fieldset>':'';
+
 ?>
 
 <!DOCTYPE HTML>
@@ -26,6 +36,10 @@ $btn = array(
     <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据</title>
     <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <style type="text/css">
+		ul{list-style:none;}
+		li{float:left;margin-right:3em;}
+    </style>
     <?php echo $bd_stat; ?>
 </head>
 <body>
@@ -45,6 +59,7 @@ $btn = array(
     </table>
     <span style="color:red;"><?php echo $user_msg; ?></span>
 </div>
+<?php echo $downloads_html; ?>
 <br />
 <fieldset style="width:90%;">
 <div class="tab">
