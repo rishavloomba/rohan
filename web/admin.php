@@ -2,10 +2,11 @@
 require('ssp.php');
 session_start();
 
-if(!isset($_SESSION['user']) and $_SESSION['user'] != 1){
+if(!isset($_SESSION['user']) or $_SESSION['user'] != 1){
     header('Location: login.php');
     exit();
 }
+
 $msg = '';
 if(isset($_POST['submit'])){
     if($_POST['tb'] == 'user_add' and $_POST['username'] != '' and $_POST['password'] != '' and $_POST['expire'] != '' and $_POST['gid'] != ''){
