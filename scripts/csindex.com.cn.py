@@ -53,7 +53,10 @@ def parse_web(num):
                 for tr in soup.select('tr .list-div-table-header'):
                     entries.append(map(lambda x: x.text.strip(), tr.select('td')))
                 results = entries
-                n = 10
+                if entries:
+                    n = 10
+                else:
+                    time.sleep(10)
         except:
             print n
             time.sleep(600)
