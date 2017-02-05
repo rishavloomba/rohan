@@ -42,13 +42,13 @@ def parse_web(num):
             response, content = http.request(urls[num])
             if response['status'] == '200':
                 soup = BeautifulSoup(content, 'lxml', from_encoding='gbk')
-                for tr in soup.select('tr .cls-data-tr'):
+                for tr in soup.select('table .cls-data-table')[0].select('tr')[1:]:
                     entries.append(map(lambda x: x.text.strip(), tr.select('td')))
                 results = entries
                 n = 10
         except:
             print n
-            time.sleep(600)
+            time.sleep(60)
     return results
 
 def main():

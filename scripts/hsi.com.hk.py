@@ -15,6 +15,7 @@ cols = [6,2,6,2]
 
 def insert_sqlite(num, entries):
     conn = sqlite3.connect(sqlite_file)
+    conn.execute('delete from %s' % tables[num])
     for entry in entries:
         values = '"' + '", "'.join(entry) + '"'
         conn.execute('insert into %s values (%s)' % (tables[num], values))
