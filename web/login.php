@@ -34,19 +34,23 @@ if(!isset($_SESSION['user'])){
     <?php echo $bd_stat; ?>
 </head>
 <body>
+<div align="center">
 <form method="post" action="login.php">
-    <fieldset style="width:90%;">
+    <fieldset style="width:20em;">
         <legend>用户登录</legend>
         <table style="text-align:right;">
             <tr><td>用户名</td><td><input type="text" id="username" name="username" value="<?php if(isset($_POST['username'])){ echo $_POST['username']; } ?>" /></td></tr>
             <tr><td>密码</td><td><input type="password" id="password" name="password" /></td></tr>
-            <tr><td></td><td><input type="submit" value="登录" name="submit"/></td></tr>
+            <tr><td></td><td><?php echo '<span style="color: red">'.$error_msg.'</span> &nbsp; '; ?><input type="submit" value="登录" name="submit"/></td></tr>
         </table>
-        <span style="color: green">本站点提供各种金融数据分享</span><br />
-        <span style="color: green">请使用IE9以上版本浏览器，或最新版Firefox、Chrome浏览器进行登录</span><br />
-        <span style="color: green">测试用户的用户名和密码都是test</span><br />
-    <?php echo '<span style="color: red">'.$error_msg.'</span>'; ?>
+        <div align="left"><ul>
+        <li><span style="color: green">本站点提供各种金融数据分享</span></li>
+        <li><span style="color: green">请使用IE9以上版本浏览器，或最新版Firefox、Chrome浏览器进行登录</span></li>
+        <li><span style="color: green">获取用户和密码请扫二维码并关注微信公众号RohanKDD</span></li>
+        </ul></div>
     </fieldset>
+<img src="qrcode.jpg" />
 </form>
+</div>
 </body>
 </html>

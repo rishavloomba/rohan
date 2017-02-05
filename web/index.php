@@ -35,7 +35,7 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据</title>
-    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
     <style type="text/css">
 		ul{list-style:none;}
 		li{float:left;margin-right:3em;}
