@@ -23,7 +23,7 @@ foreach ($all_files as $filename) {
         $files_html .= "<li><a href='../downloads/$filename'>$filename</a></li>\n";
     }
 }
-$downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<br /><fieldset style="width:90%;"><div class="tab"><h4>文件下载</h4><ul>' . $files_html . '</ul></div></fieldset>':'';
+$downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<br /><fieldset><div class="tab"><h4>文件下载</h4><ul>' . $files_html . '</ul></div></fieldset>':'';
 
 ?>
 
@@ -33,19 +33,21 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="bookmark" href="/favicon.ico" />
     <title>若海数据</title>
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
     <style type="text/css">
-		ul{list-style:none;}
-		li{float:left;margin-right:3em;}
+        div.container {margin:0 auto;min-width:19em;max-width:41em;}
+        div.tab {text-align:left;}
+        ul {list-style:none;}
+        li {float:left;margin-right:1em;}
     </style>
     <?php echo $bd_stat; ?>
 </head>
 <body>
-<div id="container">
+<div class="container">
+<fieldset>
 <div class="tab">
-    <table style="border-style:dashed;border-width:0.1em;width:91%;">
+    <table style="width:100%;">
         <tr>
             <td>用户: <?php echo $user_name;?></td>
             <td>有效至: <?php echo $user_expire;?></td>
@@ -59,9 +61,10 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
     </table>
     <span style="color:red;"><?php echo $user_msg; ?></span>
 </div>
+</fieldset>
 <?php echo $downloads_html; ?>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>中证指数板块市盈率</h4>
     <form id="csindex_bk" action="csindex.php">
@@ -223,7 +226,7 @@ $("#csindex_hy_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>巨潮指数行业市盈率</h4>
     <form id="cnindex" action="show.php">
@@ -367,7 +370,7 @@ $("#cnindex_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>深圳证券交易所基本指标</h4>
     <div>
@@ -490,7 +493,7 @@ $("#szse_cyb_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>上海证券交易所基本指标</h4>
     <form id="sse" action="show.php">
@@ -509,6 +512,7 @@ $("#szse_cyb_submit").click(function(){
             <option value="cjl">成交量(万股)</option>
             <option value="cjje">成交金额(亿元)</option>
             <option value="cjbs">成交笔数(万笔)</option>
+            <option value="hsl">换手率(%)</option>
         </select>
         <button id="sse_submit" <?php echo $btn['sse'];?>>提交</button>
         <script type="text/javascript">
@@ -522,7 +526,7 @@ $("#sse_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>中国金融期货交易所期货行情</h4>
     <form id="cffex" action="show.php">
@@ -569,7 +573,7 @@ $("#cffex_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>伦敦贵金属行情</h4>
     <form id="kitco" action="show.php">
@@ -596,7 +600,7 @@ $("#kitco_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>中国国债收益率（到期）</h4>
     <form id="chinabond" action="show.php">
@@ -636,7 +640,7 @@ $("#chinabond_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>上海银行间拆放利率(Shanghai Interbank Offered Rate)</h4>
     <form id="shibor" action="shibor.php">
@@ -662,7 +666,7 @@ $("#shibor_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>恒生指数</h4>
     <form id="hsi" action="hsi.php">
@@ -692,7 +696,7 @@ $("#hsi_submit").click(function(){
 </div>
 </fieldset>
 <br />
-<fieldset style="width:90%;">
+<fieldset>
 <div class="tab">
     <h4>中国票据</h4>
     <form id="chinacp" action="show.php">
