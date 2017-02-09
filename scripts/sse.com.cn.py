@@ -47,8 +47,8 @@ def insert_sqlite2(entries):
     tbs = {'12': 'shsc', '1': 'shag', '2': 'shbg'}
     conn = sqlite3.connect(sqlite_file)
     for entry in entries:
-        sql = 'INSERT INTO %s (dt,sjzz,ltsz,cjl,cjje,cjbs,pjsyl) VALUES ("%s","%s","%s","%s","%s","%s","%s")' % (
-               tbs[entry['productType']],dt2,entry['marketValue'],entry['negotiableValue'],entry['trdVol'],entry['trdAmt'],entry['trdTm'],entry['profitRate'])
+        sql = 'INSERT INTO %s (dt,sjzz,ltsz,cjl,cjje,cjbs,pjsyl,hsl) VALUES ("%s","%s","%s","%s","%s","%s","%s","%s")' % (
+               tbs[entry['productType']],dt2,entry['marketValue'],entry['negotiableValue'],entry['trdVol'],entry['trdAmt'],entry['trdTm'],entry['profitRate'],entry['exchangeRate'])
         conn.execute(sql)
     conn.commit()
     conn.close()
