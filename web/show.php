@@ -20,17 +20,20 @@ echo <<<END
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>{$title}</title>
-<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highstock/4.2.3/highstock.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highcharts/4.2.3/modules/exporting.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highcharts/4.2.3/modules/offline-exporting.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/highstock.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/modules/exporting.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/modules/offline-exporting.js"></script>
 {$bd_stat}
 <script type="text/javascript">
 Highcharts.setOptions({
     lang: {
+        contextButtonTitle: '菜单',
         printChart: '打印图像',
         downloadPNG: '导出PNG格式图像',
+        downloadJPEG: '导出JPEG格式图像',
         downloadSVG: '导出SVG格式图像',
+        downloadPDF: null,
         loading: '正在加载...',
         rangeSelectorZoom: '时间范围',
         rangeSelectorFrom: '开始',

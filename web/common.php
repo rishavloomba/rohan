@@ -5,7 +5,7 @@ $bd_stat = '
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8eed5ff9cc1adf3f28b960d6738d32b0";
+  hm.src = "//hm.baidu.com/hm.js?884722235a178fd09805c7a1bcd86e63";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();

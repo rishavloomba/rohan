@@ -34,7 +34,7 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>若海数据</title>
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <style type="text/css">
         div.container {margin:0 auto;min-width:19em;max-width:41em;}
         div.tab {text-align:left;}
