@@ -12,6 +12,14 @@ else:
 
 url = 'http://www.kitco.com/gold.londonfix.html'
 sqlite_file = 'sqlite/kitco.com.db'
+headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
+
+def search_sqlite():
+    conn = sqlite3.connect(sqlite_file)
+    cursor = conn.execute('SELECT * FROM london_metal WHERE dt=?', (dt,))
+    ret = cursor.fetchone()
+    conn.close()
+    return False if ret else True
 
 def insert_sqlite(entries):
     conn = sqlite3.connect(sqlite_file)
@@ -59,11 +67,10 @@ def insert_sqlite(entries):
     conn.close()
 
 def parse_web():
-    n = 0
     print time.ctime() + ' -- ' + url
     entries = []
-    http = httplib2.Http()
-    response, content = http.request(url)
+    http = httplib2.Http(timeout=60)
+    response, content = http.request(url, headers=headers)
     if response['status'] == '200':
         soup = BeautifulSoup(content, 'lxml')
         tables = soup.select('table')
@@ -76,7 +83,8 @@ def parse_web():
     return entries
 
 def main():
-    insert_sqlite(parse_web())
+    if search_sqlite():
+        insert_sqlite(parse_web())
 
 if __name__ == '__main__':
     main()

@@ -19,7 +19,17 @@ sqls = ['INSERT INTO szsc (dt, name, today, delta, percent, hvalue, hdate) VALUE
         'INSERT INTO zxb (dt, name, today, delta, hvalue, hdate) VALUES ("%s", %s)',
         'INSERT INTO cyb (dt, name, today, delta, hvalue, hdate) VALUES ("%s", %s)']
 
+tbs = ['szsc', 'szzb', 'zxb', 'cyb']
+
 sqlite_file = 'sqlite/szse.cn.db'
+headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
+
+def search_sqlite(num):
+    conn = sqlite3.connect(sqlite_file)
+    cursor = conn.execute('SELECT * FROM %s WHERE dt=?' % tbs[num], (dt,))
+    ret = cursor.fetchone()
+    conn.close()
+    return False if ret else True
 
 def insert_sqlite(num, entries):
     conn = sqlite3.connect(sqlite_file)
@@ -31,29 +41,22 @@ def insert_sqlite(num, entries):
     conn.close()
 
 def parse_web(num):
-    n = 0
-    results = []
     print time.ctime() + ' -- ' + urls[num]
-    while n < 10:
-        n += 1
-        try:
-            entries = []
-            http = httplib2.Http()
-            response, content = http.request(urls[num])
-            if response['status'] == '200':
-                soup = BeautifulSoup(content, 'lxml', from_encoding='gbk')
-                for tr in soup.select('table .cls-data-table')[0].select('tr')[1:]:
-                    entries.append(map(lambda x: x.text.strip(), tr.select('td')))
-                results = entries
-                n = 10
-        except:
-            print n
-            time.sleep(60)
-    return results
+    entries = []
+    http = httplib2.Http(timeout=60)
+    response, content = http.request(urls[num], headers=headers)
+    if response['status'] == '200':
+        soup = BeautifulSoup(content, 'lxml', from_encoding='gbk')
+        for tr in soup.select('table .cls-data-table')[0].select('tr')[1:]:
+            tds = tr.select('td')
+            if len(tds) > 1:
+                entries.append(map(lambda x: x.text.strip(), tds))
+    return entries
 
 def main():
     for m in range(len(urls)):
-        insert_sqlite(m, parse_web(m))
+        if search_sqlite(m):
+            insert_sqlite(m, parse_web(m))
 
 if __name__ == '__main__':
     main()

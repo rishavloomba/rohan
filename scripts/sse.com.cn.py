@@ -8,12 +8,21 @@ dt = time.strftime("%Y%m%d")
 sqlite_file = 'sqlite/sse.com.cn.db'
 url = 'http://yunhq.sse.com.cn:32041/v1/sh1/dayk/000001?select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume%2Camount&begin=-2&end=-1'
 sql = 'INSERT INTO szzs (dt,open,high,low,close,volume,amount) VALUES ("%s","%s","%s","%s","%s","%s","%s")'
+tbs = ['szzs', 'shsc']
 
 if len(sys.argv) < 2:
     dt2 = time.strftime("%Y-%m-%d")
 else:
     dt2 = sys.argv[1]
 url2 = 'http://query.sse.com.cn/marketdata/tradedata/queryTradingByProdTypeData.do?searchDate=%s&prodType=gp' % dt2
+headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0'}
+
+def search_sqlite(num):
+    conn = sqlite3.connect(sqlite_file)
+    cursor = conn.execute('SELECT * FROM %s WHERE dt=?' % tbs[num], (dt2,))
+    ret = cursor.fetchone()
+    conn.close()
+    return False if ret else True
 
 def insert_sqlite(entries):
     conn = sqlite3.connect(sqlite_file)
@@ -26,21 +35,13 @@ def insert_sqlite(entries):
     conn.close()
 
 def parse_web():
-    n = 0
     results = []
     print time.ctime() + ' -- ' + url
-    while n < 10:
-        n += 1
-        try:
-            http = httplib2.Http()
-            response, content = http.request(url)
-            c = json.loads(content)
-            if dt == str(c['kline'][-1][0]):
-                results = c['kline']
-            n = 10
-        except:
-            print n
-            time.sleep(60)
+    http = httplib2.Http(timeout=60)
+    response, content = http.request(url, headers=headers)
+    c = json.loads(content)
+    if dt == str(c['kline'][-1][0]):
+        results = c['kline']
     return results
 
 def insert_sqlite2(entries):
@@ -54,27 +55,21 @@ def insert_sqlite2(entries):
     conn.close()
 
 def parse_web2():
-    n = 0
     results = []
     print time.ctime() + ' -- ' + url2
-    while n < 10:
-        n += 1
-        try:
-            http = httplib2.Http()
-            headers = {'Referer': 'http://www.sse.com.cn/market/stockdata/overview/day/'}
-            response, content = http.request(url2, 'GET', headers=headers)
-            c = json.loads(content)
-            if c['result'][0]['profitRate']:
-                results = c['result']
-            n = 10
-        except:
-            print n
-            time.sleep(60)
+    http = httplib2.Http(timeout=60)
+    headers.update({'Referer': 'http://www.sse.com.cn/market/stockdata/overview/day/'})
+    response, content = http.request(url2, 'GET', headers=headers)
+    c = json.loads(content)
+    if c['result'][0]['profitRate']:
+        results = c['result']
     return results
 
 def main():
-    insert_sqlite(parse_web())
-    insert_sqlite2(parse_web2())
+    if search_sqlite(0):
+        insert_sqlite(parse_web())
+    if search_sqlite(1):
+        insert_sqlite2(parse_web2())
 
 if __name__ == '__main__':
     main()
