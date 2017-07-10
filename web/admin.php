@@ -16,12 +16,12 @@ if(isset($_POST['submit'])){
         $gid = $_POST['gid'];
         $expire = $_POST['expire'];
         $sql_add_user = "insert into user (gid,name,auth1,auth2,expire) values ('$gid','$username','$auth1','$auth2','$expire')";
-        SSP::simple('acl.db', $sql_add_user);
+        SSP::simple('acl/acl.db', $sql_add_user);
     }
     if($_POST['tb'] == 'user_del' and $_POST['id'] != ''){
         $uid = $_POST['id'];
         $sql_del_user = "delete from user where id='$uid'";
-        SSP::simple('acl.db', $sql_del_user);
+        SSP::simple('acl/acl.db', $sql_del_user);
     }
     if($_POST['tb'] == 'user_mod' and $_POST['id'] != ''){
         $sql_mod_user = "update user set ";
@@ -32,14 +32,14 @@ if(isset($_POST['submit'])){
             $sql_mod_user .= "expire='" . $_POST['expire'] . "',";
         }
         $sql_mod_user .= "gid='" . $_POST['gid'] . "' where id='" . $_POST['id'] . "'";
-        SSP::simple('acl.db', $sql_mod_user);
+        SSP::simple('acl/acl.db', $sql_mod_user);
     }
     if($_POST['tb'] == 'level_add' and $_POST['level'] != ''){
         $level = $_POST['level'];
         $privilege = $_POST['privilege'];
         $level_msg = $_POST['level_msg'];
         $sql_add_level = "insert into level (level,privilege,msg) values ('$level','$privilege','$level_msg')";
-        SSP::simple('acl.db', $sql_add_level);
+        SSP::simple('acl/acl.db', $sql_add_level);
     }
     if($_POST['tb'] == 'level_mod' and $_POST['id'] != ''){
         $sql_mod_level = "update level set ";
@@ -47,15 +47,15 @@ if(isset($_POST['submit'])){
             $sql_mod_level .= "privilege='" . $_POST['privilege'] . "',";
         }
         $sql_mod_level .= "msg='" . $_POST['level_msg'] . "' where id='" . $_POST['id'] . "'";
-        SSP::simple('acl.db', $sql_mod_level);
+        SSP::simple('acl/acl.db', $sql_mod_level);
     }
     if($_POST['tb'] == 'level_del' and $_POST['id'] != ''){
         $gid = $_POST['id'];
         $sql_qry_level = "select name from user where gid='$gid'";
-        $user_in_level = SSP::simple('acl.db', $sql_qry_level);
+        $user_in_level = SSP::simple('acl/acl.db', $sql_qry_level);
         if(count($user_in_level) == 0){
             $sql_del_level = "delete from level where id='$gid'";
-            SSP::simple('acl.db', $sql_del_level);
+            SSP::simple('acl/acl.db', $sql_del_level);
         }else{
             $u = '';
             foreach($user_in_level as $d){
@@ -68,8 +68,8 @@ if(isset($_POST['submit'])){
 
 $sql1 = 'select user.id,user.name,level.level,user.expire from user,level where user.gid=level.id';
 $sql2 = 'select id,level,privilege,msg from level';
-$data1 = SSP::simple('acl.db', $sql1);
-$data2 = SSP::simple('acl.db', $sql2);
+$data1 = SSP::simple('acl/acl.db', $sql1);
+$data2 = SSP::simple('acl/acl.db', $sql2);
 $user_list_html = '';
 foreach($data1 as $d){
     $user_list_html .= '<option value="' . $d[0] . '">' . $d[1] . '</option>';

@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])){
     exit();
 }else{
     $sql = "select user.name,user.expire,level.level,level.privilege,level.msg from user,level where user.gid=level.id and user.id='" . $_SESSION['user'] . "'";
-    $priv_data = SSP::simple('acl.db', $sql);
+    $priv_data = SSP::simple('acl/acl.db', $sql);
     $user_name = $priv_data[0][0];
     $user_expire = $priv_data[0][1];
     if(time() < strtotime($user_expire)) {

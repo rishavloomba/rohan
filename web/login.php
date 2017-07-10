@@ -10,7 +10,7 @@ if(!isset($_SESSION['user'])){
         $auth1 = sha1($_POST['username']);
         $auth2 = sha1($_POST['password']);
         $sql = "select id from user where auth1='" . $auth1 . "' and auth2='" . $auth2 . "'";
-        $data = SSP::simple('acl.db', $sql);
+        $data = SSP::simple('acl/acl.db', $sql);
         if(count($data)==1){
             $_SESSION['user'] = $data[0][0];
             header('Location: index.php');
