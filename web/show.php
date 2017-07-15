@@ -113,6 +113,7 @@ $(function () {
 </head>
 <body>
 <div id="container" style="height: 600px; min-width: 1000px"></div>
+<div align="center"><a href="javascript:history.go(-1);">返回</a></div>
 </body>
 </html>
 END;

@@ -57,10 +57,25 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
         <tr>
             <td>等级: <?php echo $user_level;?></td>
             <td><a href="logout.php">登出</a></td>
-            <td></td>
+            <td><a href="#" id="pay_link">打赏</a></td>
         </tr>
     </table>
     <span style="color:red;"><?php echo $user_msg; ?></span>
+    <div id="pay_container" style="display: none; text-align:center;"><img src="" id="pay_img" /></div>
+<script type="text/javascript">
+$(function(){
+  $("#pay_link").click( function(){
+    $("#pay_container").show();
+    $("#pay_img").attr("src", "pay.png").slideDown('slow', function() {
+    });
+  });
+});
+$(function(){
+  $("#pay_img").click( function(){
+    $("#pay_container").hide();
+  });
+});
+</script>
 </div>
 </fieldset>
 <?php echo $downloads_html; ?>
