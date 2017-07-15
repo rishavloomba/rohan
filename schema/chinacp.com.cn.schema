@@ -1,1 +1,0 @@
-CREATE TABLE piaoju (id INTEGER PRIMARY KEY AUTOINCREMENT, dt DATE DEFAULT (DATE()), rate1 TEXT, rate2 TEXT, rate3 TEXT, rate4 TEXT, amount1 TEXT, amount2 TEXT, amount3 TEXT, amount4 TEXT);
