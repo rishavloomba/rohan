@@ -13,6 +13,7 @@ $btn = array(
     'shibor' => ($user_valid and strpos($user_priv,'shibor.org.db') !== false)? '':$btn_disabled,
     'hsi' => ($user_valid and strpos($user_priv,'hsi.com.hk.db') !== false)? '':$btn_disabled,
     'chinacp' => ($user_valid and strpos($user_priv,'chinacp.com.cn.db') !== false)? '':$btn_disabled,
+    'sme_chinext' => ($user_valid and strpos($user_priv,'sme_chinext.db') !== false)? '':$btn_disabled,
 );
 
 $files_html = '';
@@ -642,7 +643,7 @@ $("#chinabond_submit").click(function(){
 <br />
 <fieldset>
 <div class="tab">
-    <h4>上海银行间拆放利率(Shanghai Interbank Offered Rate)</h4>
+    <h4>上海银行间拆放利率(Shibor)</h4>
     <form id="shibor" action="shibor.php">
         <input type="hidden" name="title" id="shibor_title" />
         <select name="val" id="shibor_val">
@@ -696,6 +697,7 @@ $("#hsi_submit").click(function(){
 </div>
 </fieldset>
 <br />
+<!--
 <fieldset>
 <div class="tab">
     <h4>中国票据</h4>
@@ -723,6 +725,26 @@ $("#chinacp_submit").click(function(){
   $("#chinacp_sub").val($("#chinacp_col2").find("option:selected").text());
   $("#chinacp_col").val($("#chinacp_col2").find("option:selected").val() + $("#chinacp_col1").find("option:selected").val());
   $("#chinacp").submit;
+});
+        </script>
+    </form>
+</div>
+</fieldset>
+<br />
+-->
+<fieldset>
+<div class="tab">
+    <h4>每笔成交金额分布</h4>
+    <form id="sme_chinext" action="sme_chinext.php">
+        中小板或创业板股票代码：<input type="text" name="val" maxlength="6" size="6" />
+        <select name="format">
+            <option value="1">每笔成交金额分布比例</option>
+            <option value="2">每笔成交金额分布量</option>
+        </select>
+        <button id="sme_chinext_submit" <?php echo $btn['sme_chinext'];?>>提交</button>
+        <script type="text/javascript">
+$("#sme_chinext_submit").click(function(){
+  $("#sme_chinext").submit;
 });
         </script>
     </form>

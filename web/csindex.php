@@ -70,7 +70,8 @@ $(function () {
             legend: {
                 enabled: true,
                 align: 'left',
-                verticalAlign: 'top'
+                verticalAlign: 'top',
+                itemMarginTop: 20
             },
             tooltip: {
                 dateTimeLabelFormats: {

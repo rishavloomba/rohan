@@ -1,4 +1,4 @@
-baidu_raw.csv,search_engine.db,baidu
+#baidu_raw.csv,search_engine.db,baidu
 cnindex_szsc.csv,cnindex.com.cn.db,szsc
 cnindex_szzb.csv,cnindex.com.cn.db,szzb
 cnindex_zxb.csv,cnindex.com.cn.db,zxb
@@ -29,4 +29,4 @@ hsi_pe.csv,hsi.com.hk.db,hsi_pe
 hscei_pe.csv,hsi.com.hk.db,hscei_pe
 hsi_dy.csv,hsi.com.hk.db,hsi_dy
 hscei_dy.csv,hsi.com.hk.db,hscei_dy
-chinacp.csv,chinacp.com.cn.db,piaoju
+#chinacp.csv,chinacp.com.cn.db,piaoju
