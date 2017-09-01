@@ -9,14 +9,14 @@ if len(sys.argv) < 2:
 else:
     dt = sys.argv[1]
 
-urls = ['http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=1&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=2&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=3&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=1&zb_flg=4&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=1&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=2&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=3&db_type=0&date=%s' % dt,
-        'http://www.csindex.com.cn/sseportal/csiportal/syl/hytype.do?code=3&zb_flg=4&db_type=0&date=%s' % dt]
+urls = ['http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zjh1&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zjh2&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zjh3&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zjh4&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zy1&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zy2&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zy3&date=%s' % dt,
+        'http://www.csindex.com.cn/zh-CN/downloads/industry-price-earnings-ratio?type=zy4&date=%s' % dt]
 
 sqls = ['INSERT INTO hy_jtsyl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
         'INSERT INTO hy_gdsyl (dt, hyid, name, pe, total, loss, pe1, pe3, pe6, pe12) VALUES ("%s", %s)',
@@ -54,8 +54,12 @@ def parse_web(num):
     http = httplib2.Http(timeout=60)
     response, content = http.request(urls[num], headers=headers)
     if response['status'] == '200':
-        soup = BeautifulSoup(content, 'lxml', from_encoding='gbk')
-        for tr in soup.select('tr .list-div-table-header'):
+        soup = BeautifulSoup(content, 'lxml')
+        if num < 4:
+            trs = soup.select('tr .list-div-table-header')
+        else:
+            trs = soup.select('tbody tr')
+        for tr in trs:
             entries.append(map(lambda x: x.text.strip(), tr.select('td')))
     return entries
 

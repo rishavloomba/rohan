@@ -57,7 +57,8 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
         <tr>
             <td>等级: <?php echo $user_level;?></td>
             <td><a href="logout.php">登出</a></td>
-            <td><a href="#" id="pay_link">打赏</a></td>
+            <!--<td><a href="#" id="pay_link">打赏</a></td>-->
+            <td></td>
         </tr>
     </table>
     <span style="color:red;"><?php echo $user_msg; ?></span>
