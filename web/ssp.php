@@ -20,7 +20,7 @@ class SSP {
 
     static function db_connect ($db_file) {
         try {
-            $db = @new PDO("sqlite:../sqlite/{$db_file}",
+            $db = @new PDO("sqlite:sqlite/{$db_file}",
                            null,
                            null,
                            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)

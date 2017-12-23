@@ -17,11 +17,11 @@ $btn = array(
 );
 
 $files_html = '';
-$dir = '../../downloads';
+$dir = './downloads';
 $all_files = scandir($dir);
 foreach ($all_files as $filename) {
     if (is_file("$dir/$filename") and $filename != 'index.php') {
-        $files_html .= "<li><a href='../downloads/$filename'>$filename</a></li>\n";
+        $files_html .= "<li><a href='./downloads/$filename'>$filename</a></li>\n";
     }
 }
 $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<br /><fieldset><div class="tab"><h4>文件下载</h4><ul>' . $files_html . '</ul></div></fieldset>':'';
