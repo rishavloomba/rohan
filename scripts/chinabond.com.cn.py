@@ -36,7 +36,7 @@ def parse_web():
     print time.ctime() + ' -- ' + url
     entries = []
     http = httplib2.Http(timeout=60)
-    response, content = http.request(url, headers=headers)
+    response, content = http.request(url, method='POST', headers=headers)
     if response['status'] == '200':
         soup = BeautifulSoup(content, 'lxml')
         for tr in soup.select('tr'):
