@@ -4,10 +4,10 @@ import StringIO
 import xlrd
 import datetime
 
-urls = ['http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/pe/hsi.xls',
-        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/pe/hscei.xls',
-        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/dy/hsi.xls',
-        'http://www.hsi.com.hk/HSI-Net/static/revamp/contents/en/dl_centre/reports_stat/monthly/dy/hscei.xls']
+urls = ['https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/monthly/pe/hsi.xls',
+        'https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/monthly/pe/hscei.xls',
+        'https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/reports_stat/monthly/dy/hsi.xls',
+        'https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/reports_stat/monthly/dy/hscei.xls']
 sqlite_file = 'sqlite/hsi.com.hk.db'
 
 tables = ['hsi_pe','hscei_pe','hsi_dy','hscei_dy']

@@ -35,7 +35,7 @@ $downloads_html = ($user_valid and strpos($user_priv,'downloads') !== false)? '<
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>若海数据</title>
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <style type="text/css">
         div.container {margin:0 auto;min-width:19em;max-width:41em;}
         div.tab {text-align:left;}
@@ -651,6 +651,43 @@ $("#chinabond_submit").click(function(){
   $("#chinabond_title").val('中国国债收益率（到期） - ' + $("#chinabond_val").find("option:selected").text());
   $("#chinabond_sub").val($("#chinabond_val").find("option:selected").text());
   $("#chinabond").submit;
+});
+        </script>
+    </form>
+</div>
+<div class="tab">
+    <h4>国开债收益率（到期）</h4>
+    <form id="gkh" action="show.php">
+        <input type="hidden" name="db" value="chinabond.com.cn.db" />
+        <input type="hidden" name="title" id="gkh_title" />
+        <input type="hidden" name="sub" id="gkh_sub" />
+        <input type="hidden" name="tb" value="gkh" />
+        <input type="hidden" name="key" value="name" />
+        <input type="hidden" name="col" value="rate" />
+        <select name="val" id="gkh_val">
+            <option value="0d">0d</option>
+            <option value="1m">1m</option>
+            <option value="2m">2m</option>
+            <option value="3m">3m</option>
+            <option value="6m">6m</option>
+            <option value="9m">9m</option>
+            <option value="1y">1y</option>
+            <option value="3y">3y</option>
+            <option value="5y">5y</option>
+            <option value="7y">7y</option>
+            <option value="10y">10y</option>
+            <option value="15y">15y</option>
+            <option value="20y">20y</option>
+            <option value="30y">30y</option>
+            <option value="40y">40y</option>
+            <option value="50y">50y</option>
+        </select>
+        <button id="gkh_submit" <?php echo $btn['chinabond'];?>>提交</button>
+        <script type="text/javascript">
+$("#gkh_submit").click(function(){
+  $("#gkh_title").val('国开债收益率（到期） - ' + $("#gkh_val").find("option:selected").text());
+  $("#gkh_sub").val($("#gkh_val").find("option:selected").text());
+  $("#gkh").submit;
 });
         </script>
     </form>

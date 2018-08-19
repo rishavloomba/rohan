@@ -19,10 +19,10 @@ echo <<<END
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>{$title}</title>
-<script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/highstock.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/modules/exporting.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/highstock/5.0.10/modules/offline-exporting.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@6.1.1/highstock.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@6.1.1/modules/exporting.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@6.1.1/modules/offline-exporting.min.js"></script>
 {$bd_stat}
 <script type="text/javascript">
 Highcharts.setOptions({
