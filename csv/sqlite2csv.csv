@@ -23,6 +23,7 @@ sse_shbg.csv,sse.com.cn.db,shbg
 kitco_london.csv,kitco.com.db,london_metal
 cffex_future.csv,cffex.com.cn.db,future
 chinabond.csv,chinabond.com.cn.db,bond
+chinabond_gkh.csv,chinabond.com.cn.db,gkh
 shibor.csv,shibor.org.db,shibor
 shibor_ma.csv,shibor.org.db,shibor_ma
 hsi_pe.csv,hsi.com.hk.db,hsi_pe
